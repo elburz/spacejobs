@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, url_for, render_template
 from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -33,14 +33,19 @@ class Job(db.Model):
 
 @app.route('/')
 def main():
-    return "main page"
+    return render_template("main.html")
+
+
+@app.route('/about')
+def about():
+	return render_template("about.html")
 
 
 @app.route('/metrics')
 def metrics():
-	return "metrics"
+	return render_template("metrics.html")
 
 
 @app.route('/submit')
 def submit():
-	return "submit here"
+	return render_template("submit.html")

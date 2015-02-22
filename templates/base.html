@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>SpaceJobs</title>
+		<!-- Bootstrap -->
+		<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+		<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+		<link href="{{ url_for('static', filename='css/queries.css') }}" rel="stylesheet">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/flexslider.css') }}" type="text/css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}" type="text/css">
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="responsive-logo"></div>
+					<div class="pullcontainer">
+						<a href="#" id="pull"><i class="fa fa-bars fa-2x"></i></a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<nav>
+							<div class="logo-holder"></div>
+							<ul class="clearfix">
+								<li><a href="{{ url_for('about') }}">About</a></li>
+								<li class="dot">.</li>
+								<li><a href="#signUp" class="r_spacer">Subscribe</a></li>
+								<li><a href="{{ url_for('metrics') }}">Metrics</a></li>
+								<li class="dot">.</li>
+								<li><a href="{{ url_for('submit') }}">Submit</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+		{% block content %} 
+		{% endblock %}
+		<section class="sign_up" id="signUp">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3 sign-up">
+						<h2 class="logo-header">Subscribe for weekly updates!</h2>
+						<form name="signup-form">
+							<input class="signup-input" type="email" name="email_address" value="" placeholder="enter your email..." title="Please enter a valid email address." required>
+							<button type="submit" class="submit-btn">GO</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer id="contact">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 footer-leftcol">
+						<p><span class="bold-16p">SpaceJobs</span><br>
+						25 The Esplanade<br>
+						Toronto, ON, Canada M5E1W5<br>
+						<a href="#">info@domain.com</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/jquery.flexslider.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/waypoints.min.js') }}"></script>
+	</body>
+</html>

@@ -173,13 +173,13 @@ table { border-collapse: collapse; border-spacing: 0; }
 /* ==========================================================================
 Headings
 ========================================================================== */
-h1.chain { text-align: center; text-transform: uppercase; color: #353738; letter-spacing: 2px; font-size: 18px; font-weight: 600; background: url(../img/cog-icon.png) no-repeat top center; padding-top: 75px; }
+h1.chain { text-align: center; text-transform: uppercase; color: #353738; letter-spacing: 2px; font-size: 18px; font-weight: 600; }
 h2.frame { text-align: center; text-transform: uppercase; color: #353738; letter-spacing: 2px; font-size: 18px; font-weight: 600; background: url(../img/frame-icon.png) no-repeat top center; padding-top: 65px; margin-top: 70px; }
 h2.mech { text-align: center; text-transform: uppercase; color: #353738; letter-spacing: 2px; font-size: 18px; font-weight: 600; background: url(../img/mech-icon.png) no-repeat top center; padding-top: 65px; margin-top: 70px; }
 h2.front-frame { text-align: center; text-transform: uppercase; color: #353738; letter-spacing: 2px; font-size: 18px; font-weight: 600; background: url(../img/front-icon.png) no-repeat top center; padding-top: 65px; margin-top: 70px; }
 h2.twitter-post-username { color: #353738; letter-spacing: 2px; font-size: 18px; font-weight: 600; margin-top: 30px; }
 h2.twitter-post-username span { color: #848789; font-weight: 300; }
-h2.logo-header { text-align: center; color: #848789; letter-spacing: 1px; font-size: 24px; font-weight: 300; background: url(../img/main-logo.png) no-repeat top center; padding-top: 120px; margin: 70px 0 40px 0; font-style: italic; }
+h2.logo-header { text-align: center; color: #848789; letter-spacing: 1px; font-size: 24px; font-weight: 300; padding-top: 0px; margin: 0px 0 40px 0; font-style: italic; }
 /* ==========================================================================
 User Styles
 ========================================================================== */
@@ -195,7 +195,7 @@ a { color: #282f35; -webkit-transition: all .25s ease; -moz-transition: all .25s
 a:hover { color: #64c29e; text-decoration: none; }
 p { text-align: center; font-size: 14px; color: #848789; font-weight: 300; word-spacing: 2px; line-height: 1.8em; margin-top: 25px; }
 p.text-intro { font-size: 18px; }
-.hero { background: url(../img/hero-bg.jpg) no-repeat top center #f4f5fc; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 685px; }
+.hero { background: url(../img/hero-bg.jpg) no-repeat top center #f4f5fc; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 300px; }
 nav { height: 85px; margin-top: 30px; position: relative; }
 .logo-holder { background: url(../img/main-logo.png) no-repeat center center; width: 94px; height: 85px; position: absolute; top: 0; left: 327px; }
 .responsive-logo { display: hidden; }
@@ -204,25 +204,14 @@ header ul { padding-top: 35px; }
 header ul li { list-style: none; float: left; text-transform: uppercase; letter-spacing: 2px; }
 header ul li a { display: block; margin: 0 30px; color: #4d4959; }
 .r_spacer { margin-right: 180px; }
-.intro { padding: 115px 0; background-color: #fbfbfb; }
-.section-1 { background: url(../img/left-box-1.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 600px; position: relative; }
-.section-2 { background: url(../img/left-box-2.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 600px; position: relative; }
-.section-3 { background: url(../img/red-frame.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 600px; position: relative; }
-.section-4 { background: url(../img/red-bike.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 600px; }
+.intro { padding: 60px 0; background-color: #fbfbfb; }
 .section-text { position: relative; height: 600px; }
 .nopadding { padding: 0 !important; margin: 0 !important; }
 .thin-sep { height: 1px; background-color: #d7d7d7; width: 50px; margin: 8% auto 0 auto; }
 .small-featured-img { height: 200px; width: 100%; position: absolute; bottom: 0; }
-.seat-red { background: url(../img/seat-red.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
-.seat-black { background: url(../img/seat-black.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
-.frame-red { background: url(../img/chrome-wheels.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
 .section-text p { padding: 0 60px; text-align: justify; }
 .arrow { background: url(../img/arrow.png) no-repeat center center; width: 21px; height: 10px; margin: -1px auto 0 auto; }
-.logo-1 { width: 113px; height: 118px; background: url(../img/bicycle-logo.png); position: absolute; left: 50%; top: 50%; margin-left: -56px; margin-top: -59px; }
-.logo-2 { width: 177px; height: 152px; background: url(../img/vintage-logo.png); position: absolute; left: 50%; top: 50%; margin-top: -70px; margin-left: -90px; }
-.logo-3 { width: 208px; height: 67px; background: url(../img/bicycles-sml-logo.png); position: absolute; left: 50%; top: 50%; margin-left: -110px; margin-top: -10px; }
 .flex-container { background-color: #f7f7f7; padding: 125px 0 35px; text-align: center; }
-.flex-twitter-icon { width: 32px; height: 27px; background: url(../img/twitter-bird.png) no-repeat center center; margin: 0 auto; }
 p.twitter-post { color: #848789; font-size: 24px; font-style: italic; font-weight: 300; margin-bottom: 100px; }
 .left-box-1 { width: 50%; float: left; }
 .left-box-2 { width: 50%; float: right; }
@@ -251,10 +240,10 @@ a.close-overlay.hidden { display: none }
 .shop-btn { border: solid 1px #bbb; padding: 15px 50px; color: #fff; text-transform: uppercase; letter-spacing: 3px; font-weight: 400; }
 .shop-btn:hover, .shop-btn:focus { border: solid 1px #64c29e; }
 .sign-up { text-align: center; }
-.signup-input { border: solid 1px #d3d7d9; padding: 25px; width: 65%; color: #929292; font-style: italic; letter-spacing: 1px; }
-.submit-btn { background-color: #64c29e; color: #fff; border: solid 1px #64c29e; font-weight: 300; padding: 25px 50px; }
-section.sign_up { padding: 40px 0 110px 0; }
-footer { background-color: #f7f7f7; padding: 100px 0; }
+.signup-input { border: solid 1px #d3d7d9; padding: 15px; width: 65%; color: #929292; font-style: italic; letter-spacing: 1px; }
+.submit-btn { background-color: #64c29e; color: #fff; border: solid 1px #64c29e; font-weight: 300; padding: 15px 50px; }
+section.sign_up { padding: 40px 0 40px 0; }
+footer { background-color: #f7f7f7; padding: 25px 0; }
 footer p { font-size: 13px; margin: 0; }
 .footer-leftcol p { text-align: left; }
 .footer-rightcol p { text-align: right; font-style: italic; margin-top: 20px; }
@@ -264,8 +253,5 @@ footer p { font-size: 13px; margin: 0; }
 .footer-midcol li { list-style: none; display: inline-block; margin-right: 15px; }
 .footer-midcol li a { opacity: 1; }
 .footer-midcol li a:hover { opacity: 0.5; }
-.twitter-icon { background: url(../img/twitter-icon.png); height: 34px; width: 35px; display: block; text-indent: -9999px; }
-.facebook-icon { background: url(../img/facebook-icon.png); height: 34px; width: 35px; display: block; text-indent: -9999px; }
-.pintrest-icon { background: url(../img/pintrest-icon.png); height: 34px; width: 35px; display: block; text-indent: -9999px; }
 .wp1, .wp2, .wp3, .wp4, .wp5, .wp6 { visibility: hidden; }
 .bounceInLeft, .bounceInRight, .fadeInUp { visibility: visible; }
