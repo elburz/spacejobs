@@ -33,9 +33,9 @@
 						<nav>
 							<div class="logo-holder"></div>
 							<ul class="clearfix">
-								<li><a href="{{ url_for('about') }}">About</a></li>
+								<li><a href="{{ url_for('about') }}">About Us</a></li>
 								<li class="dot">.</li>
-								<li><a href="#signUp" class="r_spacer">Subscribe</a></li>
+								<li><a href="{{ url_for('main') }}" class="r_spacer">Jobs</a></li>
 								<li><a href="{{ url_for('metrics') }}">Metrics</a></li>
 								<li class="dot">.</li>
 								<li><a href="{{ url_for('submit') }}">Submit</a></li>
@@ -51,11 +51,19 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 sign-up">
-						<h2 class="logo-header">Subscribe for weekly updates!</h2>
-						<form name="signup-form">
-							<input class="signup-input" type="email" name="email_address" value="" placeholder="enter your email..." title="Please enter a valid email address." required>
-							<button type="submit" class="submit-btn">GO</button>
-						</form>
+						{% with messages = get_flashed_messages() %}
+						{% if messages %}
+							{% for message in messages %}
+								<h2 class="logo-header">{{ message }}</h2>
+							{% endfor %}
+						{% else %}
+							<h2 class="logo-header">Subscribe for weekly updates!</h2>
+							<form name="signup-form" method="post">
+								<input class="signup-input" type="email" name="email_address" value="" placeholder="enter your email..." title="Please enter a valid email address." required>
+								<button type="submit" value="email_subscribe" name="submit" class="submit-btn">GO</button>
+							</form>
+						{% endif %}
+						{% endwith %}
 					</div>
 				</div>
 			</div>

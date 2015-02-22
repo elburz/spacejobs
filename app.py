@@ -1,8 +1,10 @@
 import os
-from flask import Flask, url_for, render_template
+from flask import Flask, render_template, request, flash, redirect
 from flask.ext.sqlalchemy import SQLAlchemy
+import datetime
 
 app = Flask(__name__)
+'''
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
@@ -29,11 +31,24 @@ class Job(db.Model):
 
 	def __repr__(self):
 		return '<Job %r>' % self.position
+'''
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def main():
-    return render_template("main.html")
+	# if subscribe button clicked
+	if request.method == 'POST':
+		if request.form['submit'] == 'email_subscribe':
+			# grab info
+			email_address = request.form['email_address']
+			date = datetime.date.today()
+
+			# add to database here
+
+			# flash message here
+			flash('Thank you for subscribing!')
+			return redirect('/')
+	return render_template("main.html")
 
 
 @app.route('/about')
@@ -48,4 +63,5 @@ def metrics():
 
 @app.route('/submit')
 def submit():
+
 	return render_template("submit.html")
