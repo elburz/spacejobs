@@ -12,6 +12,19 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/flexslider.css') }}" type="text/css">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}" type="text/css">
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		<!-- DataTables CSS -->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery.dataTables.css') }}">
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<!-- DataTables -->
+		<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
+		<script>
+		$(document).ready( function () {
+		    $('#jobList').DataTable();
+		} );
+		</script>
+
+
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -51,11 +64,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 sign-up">
-						{% with messages = get_flashed_messages() %}
-						{% if messages %}
-							{% for message in messages %}
-								<h2 class="logo-header">{{ message }}</h2>
-							{% endfor %}
+						{% if subscribe_bool == True %}
+							<h2 class="logo-header">Thank you for subscribing!</h2>
 						{% else %}
 							<h2 class="logo-header">Subscribe for weekly updates!</h2>
 							<form name="signup-form" method="post">
@@ -63,7 +73,6 @@
 								<button type="submit" value="email_subscribe" name="submit" class="submit-btn">GO</button>
 							</form>
 						{% endif %}
-						{% endwith %}
 					</div>
 				</div>
 			</div>
@@ -81,13 +90,13 @@
 				</div>
 			</div>
 		</footer>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 		<script src="{{ url_for('static', filename='js/jquery.flexslider.js') }}"></script>
 		<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 		<script src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
 		<script src="{{ url_for('static', filename='js/waypoints.min.js') }}"></script>
+
 	</body>
 </html>

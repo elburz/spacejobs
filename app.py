@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, flash, redirect
+from flask import Flask, render_template, request, flash
 from flask.ext.sqlalchemy import SQLAlchemy
 import datetime
 
@@ -36,6 +36,9 @@ class Job(db.Model):
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
+
+	# switch header if someone subscribes
+	subscribe_bool = False
 	# if subscribe button clicked
 	if request.method == 'POST':
 		if request.form['submit'] == 'email_subscribe':
@@ -45,10 +48,10 @@ def main():
 
 			# add to database here
 
-			# flash message here
-			flash('Thank you for subscribing!')
-			return redirect('/')
-	return render_template("main.html")
+			# swap message with bool
+			subscribe_bool = True
+			
+	return render_template("main.html", subscribe_bool=subscribe_bool)
 
 
 @app.route('/about')
