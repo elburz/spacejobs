@@ -9,7 +9,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 
-class JobListing(db.model):
+class JobListing(db.Model):
 	__tablename__ = 'scrapedresults'
 
 	id = db.Column(db.Integer, primary_key=True)
