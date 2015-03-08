@@ -34,7 +34,7 @@ class JobListing(db.Model):
 		return self.jobPosition
 
 
-#print(JobListing.query.all())
+print(JobListing.query.all())
 
 
 class JobListing1():
