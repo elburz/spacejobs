@@ -10,7 +10,7 @@ db = SQLAlchemy(app)
 
 
 class JobListing(db.Model):
-	# __tablename__ = 'scrapedresults'
+	__tablename__ = 'scrapedresults'
 
 	id = db.Column(db.Integer, primary_key=True)
 	term = db.Column(db.Text)
@@ -31,7 +31,7 @@ class JobListing(db.Model):
 		self.link = link
 
 	def __repr__(self):
-		return "string %s" % self.jobPosition
+		return self.jobPosition
 
 
 print(JobListing.query.all())
