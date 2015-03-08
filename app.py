@@ -1,37 +1,37 @@
 import os
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request
 from flask.ext.sqlalchemy import SQLAlchemy
 import datetime
 
 app = Flask(__name__)
-'''
+
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 
-# database models
-class Job(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
-	position = db.Column(db.String(120))
-	agency = db.Column(db.String(120))
-	description = db.Column(db.Text)
-	location = db.Column(db.String(120))
-	term = db.Column(db.String(120))
-	date_added = db.Column(db.Date)
-	apply_link = db.Column(db.Text)
+class JobListing(db.model):
+	__tablename__ = 'scrapedresults'
 
-	def __init__(self, position, agency, description, location, term, date_added, apply_link):
-		self.position = position
-		self.agency = agency
-		self.description = description
-		self.location = location
+	id = db.Column(db.Integer, primary_key=True)
+	term = db.Column(db.Text)
+	location = db.Column(db.Text)
+	jobPosition = db.Column(db.Text)
+	department = db.Column(db.Text)
+	agency = db.Column(db.Text)
+	datePosted = db.Column(db.Text)
+	link = db.Column(db.Text)
+
+	def __init__(self, term, location, jobPosition, department, agency, datePosted, link):
 		self.term = term
-		self.date_added = date_added
-		self.apply_link = apply_link
+		self.location = location
+		self.jobPosition = jobPosition
+		self.department = department
+		self.agency = agency
+		self.datePosted = datePosted
+		self.link = link
 
 	def __repr__(self):
-		return '<Job %r>' % self.position
-'''
+		print(self.jobPosition)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -51,7 +51,7 @@ def main():
 			# swap message with bool
 			subscribe_bool = True
 			
-	return render_template("main.html", subscribe_bool=subscribe_bool)
+	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.order_by(JobListing.datePosted.desc()).all())
 
 
 @app.route('/about')
