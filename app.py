@@ -49,7 +49,7 @@ class JobListing():
 
 jobTest = JobListing()
 
-jobTest = [JobTest, JobTest]
+jobList = [JobTest, JobTest]
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -70,7 +70,7 @@ def main():
 			subscribe_bool = True
 
 	# return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.all())
-	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=jobTest)
+	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=jobList)
 	
 	# return render_template("main.html", subscribe_bool=subscribe_bool)
 
