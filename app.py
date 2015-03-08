@@ -15,23 +15,23 @@ class JobListing(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	term = db.Column(db.Text)
 	location = db.Column(db.Text)
-	jobPosition = db.Column(db.Text)
+	jobposition = db.Column(db.Text)
 	department = db.Column(db.Text)
 	agency = db.Column(db.Text)
-	datePosted = db.Column(db.Text)
+	dateposted = db.Column(db.Text)
 	link = db.Column(db.Text)
 
-	def __init__(self, term, location, jobPosition, department, agency, datePosted, link):
+	def __init__(self, term, location, jobposition, department, agency, dateposted, link):
 		self.term = term
 		self.location = location
-		self.jobPosition = jobPosition
+		self.jobposition = jobposition
 		self.department = department
 		self.agency = agency
-		self.datePosted = datePosted
+		self.dateposted = dateposted
 		self.link = link
 
 	def __repr__(self):
-		return self.jobPosition
+		return self.jobposition
 
 
 print(JobListing.query.all())
