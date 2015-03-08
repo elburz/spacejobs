@@ -5,7 +5,7 @@ import datetime
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['MAIN_SCRAPER_DB_URL']
 db = SQLAlchemy(app)
 
 
@@ -34,7 +34,7 @@ class JobListing(db.Model):
 		return self.jobPosition
 
 
-print(JobListing.query.all())
+#print(JobListing.query.all())
 
 
 class JobListing1():
