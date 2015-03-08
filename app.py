@@ -31,7 +31,10 @@ class JobListing(db.Model):
 		self.link = link
 
 	def __repr__(self):
-		return self.jobPosition
+		return "string %s" % self.jobPosition
+
+
+print(JobListing.query.all())
 
 
 class JobListing1():
