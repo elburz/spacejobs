@@ -10,7 +10,7 @@ db = SQLAlchemy(app)
 
 
 class JobListing(db.Model):
-	__tablename__ = 'scrapedresults'
+	# __tablename__ = 'scrapedresults'
 
 	id = db.Column(db.Integer, primary_key=True)
 	term = db.Column(db.Text)
@@ -31,7 +31,7 @@ class JobListing(db.Model):
 		self.link = link
 
 	def __repr__(self):
-		print(self.jobPosition)
+		return self.jobPosition
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -51,7 +51,7 @@ def main():
 			# swap message with bool
 			subscribe_bool = True
 			
-	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.order_by(JobListing.datePosted.desc()).all())
+	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.all())
 
 
 @app.route('/about')
