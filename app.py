@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
-
+'''
 class JobListing(db.Model):
 	# __tablename__ = 'scrapedresults'
 
@@ -32,6 +32,7 @@ class JobListing(db.Model):
 
 	def __repr__(self):
 		return self.jobPosition
+'''
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -51,7 +52,8 @@ def main():
 			# swap message with bool
 			subscribe_bool = True
 			
-	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.all())
+	# return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.all())
+	return render_template("main.html", subscribe_bool=subscribe_bool)
 
 
 @app.route('/about')
