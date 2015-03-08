@@ -49,7 +49,7 @@ class JobListing():
 
 jobTest = JobListing()
 
-jobList = [JobTest, JobTest]
+jobList = [jobTest, jobTest]
 
 
 @app.route('/', methods=['GET', 'POST'])
