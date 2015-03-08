@@ -8,26 +8,41 @@
 		<div class="col-md-8 col-md-offset-2">
 			<h1 class="chain">Find a job and get to Space</h1>
 			<table id="jobList" class="table">
-				<tr>
-					<th> #
-					<th> Term
-					<th> Location
-					<th> Position
-					<th> Department
-					<th> Agency
-					<th> Date Posted
-					<th> Link
+				<thead>
+					<tr>
+						<th> Term </th>
+						<th> Location </th>
+						<th> Position </th>
+						<th> Department </th>
+						<th> Agency </th>
+						<th> Date Posted </th>
+						<th> Link </th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th> Term </th>
+						<th> Location </th>
+						<th> Position </th>
+						<th> Department </th>
+						<th> Agency </th>
+						<th> Date Posted </th>
+						<th> Link </th>
+					</tr>
+				</tfoot>
+				<tbody>
 				{% for listing in jobPostings %}
-				<tr>
-					<td> {{listing.id}}
-					<td> {{listing.term}}
-					<td> {{listing.location}}
-					<td> {{listing.jobPosition}}
-					<td> {{listing.department}}
-					<td> {{listing.agency}}
-					<td> {{listing.datePosted}}
-					<td> {{listing.link}}
+					<tr>
+						<td> {{listing.term}} </td>
+						<td> {{listing.location}} </td>
+						<td> {{listing.jobPosition}} </td>
+						<td> {{listing.department}} </td>
+						<td> {{listing.agency}} </td>
+						<td> {{listing.datePosted}} </td>
+						<td> <a href={{listing.link}}>Apply now!</a> </td>
+					</tr>
 				{% endfor %}
+				</tbody>
 			</table>
 		</div>
 	</div>
