@@ -49,6 +49,8 @@ class JobListing():
 
 jobTest = JobListing()
 
+jobTest = [JobTest, JobTest]
+
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
@@ -67,9 +69,8 @@ def main():
 			# swap message with bool
 			subscribe_bool = True
 
-			
 	# return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.all())
-	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=jobTest.term)
+	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=jobTest)
 	
 	# return render_template("main.html", subscribe_bool=subscribe_bool)
 
