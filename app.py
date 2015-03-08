@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
-'''
+
 class JobListing(db.Model):
 	# __tablename__ = 'scrapedresults'
 
@@ -32,10 +32,9 @@ class JobListing(db.Model):
 
 	def __repr__(self):
 		return self.jobPosition
-'''
 
 
-class JobListing():
+class JobListing1():
 
 	def __init__(self):
 		self.id = 1
@@ -47,7 +46,7 @@ class JobListing():
 		self.datePosted = 'zxcvb'
 		self.link = 'hjk;g'
 
-jobTest = JobListing()
+jobTest = JobListing1()
 
 jobList = [jobTest, jobTest]
 
