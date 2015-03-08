@@ -17,17 +17,17 @@
 					<th> Agency
 					<th> Date Posted
 					<th> Link
-				{% for listing in jobPostings %}
+				<!-- {% for listing in jobPostings %} -->
 				<tr>
-					<td> {{listing.id}}
-					<td> {{listing.term}}
-					<td> {{listing.location}}
-					<td> {{listing.jobPosition}}
-					<td> {{listing.department}}
-					<td> {{listing.agency}}
-					<td> {{listing.datePosted}}
-					<td> {{listing.link}}
-				{% endfor %}
+					<td> {{jobPostings.id}}
+					<td> {{jobPostings.term}}
+					<td> {{jobPostings.location}}
+					<td> {{jobPostings.jobPosition}}
+					<td> {{jobPostings.department}}
+					<td> {{jobPostings.agency}}
+					<td> {{jobPostings.datePosted}}
+					<td> {{jobPostings.link}}
+				<!-- {% endfor %} -->
 			</table>
 		</div>
 	</div>

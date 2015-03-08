@@ -48,6 +48,7 @@ class JobListing():
 		self.link = 'hjk;g'
 
 jobTest = JobListing()
+print(jobTest.term)
 
 
 @app.route('/', methods=['GET', 'POST'])
