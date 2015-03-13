@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>SpaceJobs</title>
+		
 		<!-- Bootstrap -->
 		<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 		<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
@@ -12,13 +13,17 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/flexslider.css') }}" type="text/css">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}" type="text/css">
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		
 		<!-- DataTables CSS -->
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery.dataTables.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dataTables.responsive.css') }}">
+
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		
 		<!-- DataTables -->
 		<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
-		<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/dataTables.responsive.js') }}"></script>
+		<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/dataTables.responsive.min.js') }}"></script>
 
 		<script>
 		$(document).ready( function () {
