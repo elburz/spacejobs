@@ -17,6 +17,7 @@ class spaceXContractorSpider(CrawlSpider):
 
 	def parse_job(self, response):
 		print('parsing job %s' % response.url + '\n')
+		print(response.body)
 		
 		item = SpaceXItem()
 		item['term'] = 'Contractor'

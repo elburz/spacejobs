@@ -20,7 +20,9 @@
 		<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
 		<script>
 		$(document).ready( function () {
-		    $('#jobList').DataTable();
+		    $('#jobList').DataTable({
+		    	responsive: true,
+		    });
 		} );
 		</script>
 

@@ -9,6 +9,6 @@
 class SpacexPipeline(object):
 
     def process_item(self, item, spider):
-    	print(item)
+    	print('new item', item)
         return item
 
