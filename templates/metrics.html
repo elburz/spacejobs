@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 {% block content%}
-		<!-- d3.js 
-		<script src="http://d3js.org/d3.v3.min.js"></script>-->
-		<script src="http://d3js.org/d3.v2.js"></script>
-		
+		<!-- d3.js -->
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+
 <div class="container-fluid intro">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -16,70 +15,150 @@
 
 			<script>
 
-        // Set up the plot window.
-        var margin = 80;
-        var w = 700 - 2 * margin, h = 500 - 2 * margin;
-        var svg = d3.select("#plot").append("svg")
-                        .attr("width", w + 2 * margin)
-                        .attr("height", h + 2 * margin)
-                    .append("svg:g")
-                        .attr("transform", "translate(" + margin + ", " + margin + ")");
+var svg = d3.select("body")
+	.append("svg")
+	.append("g")
 
-        // The colorbar.
-        var color = d3.scale.quantize()
-                      .range(["#156b87", "#876315", "#543510", "#872815"])
-                      .domain([0, 1]);
+svg.append("g")
+	.attr("class", "slices");
+svg.append("g")
+	.attr("class", "labels");
+svg.append("g")
+	.attr("class", "lines");
 
-        // Axes scaling functions.
-        var xscale = d3.scale.linear().range([0, w]);
-        var yscale = d3.scale.linear().range([h, 0]);
+var width = 960,
+    height = 450,
+	radius = Math.min(width, height) / 2;
 
-        // The axes objects themselves.
-        var xaxis = d3.svg.axis().scale(xscale).ticks(8);
-        var yaxis = d3.svg.axis().scale(yscale).ticks(8).orient("left");
+var pie = d3.layout.pie()
+	.sort(null)
+	.value(function(d) {
+		return d.value;
+	});
 
-        svg.append("svg:g").attr("class", "x axis")
-                           .attr("transform", "translate(0, " + h + ")");
-        svg.append("svg:g").attr("class", "y axis");
+var arc = d3.svg.arc()
+	.outerRadius(radius * 0.8)
+	.innerRadius(radius * 0.4);
 
-        // Format the numbers 
-        var numFormat = d3.format(".2f")
+var outerArc = d3.svg.arc()
+	.innerRadius(radius * 0.9)
+	.outerRadius(radius * 0.9);
 
-        // Show the information about a particular point.
-        var show_info = function (d) {
-            d3.select("#point-info").text("This is point " + d._id + ". "
-                + "It has the coordinates (" + numFormat(d.x) + ", " + numFormat(d.y) + ").");
-        };
+svg.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var key = function(d){ return d.data.label; };
+
+var color = d3.scale.ordinal()
+	.domain(["Lorem ipsum", "dolor sit", "amet", "consectetur", "adipisicing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt"])
+	.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+function randomData (){
+	var labels = color.domain();
+	return labels.map(function(label){
+		return { label: label, value: Math.random() }
+	});
+}
+
+change(randomData());
+
+d3.select(".randomize")
+	.on("click", function(){
+		change(randomData());
+	});
 
 
-        // Load the data.
-        var callback = function (data) {
-            // Rescale the axes.
-            xscale.domain([d3.min(data, function (d) { return d.x; }) - 0.05,
-                           d3.max(data, function (d) { return d.x; }) + 0.05]);
-            yscale.domain([d3.min(data, function (d) { return d.y; }) - 0.05,
-                           d3.max(data, function (d) { return d.y; }) + 0.05]);
+function change(data) {
 
-            // Display the axes.
-            svg.select(".x.axis").call(xaxis);
-            svg.select(".y.axis").call(yaxis);
+	/* ------- PIE SLICES -------*/
+	var slice = svg.select(".slices").selectAll("path.slice")
+		.data(pie(data), key);
 
-            // Insert the data points.
-            svg.selectAll("circle").data(data).enter()
-                .append("circle")
-                    .attr("id", function (d) { return d._id; })
-                    .attr("cx", function (d) { return xscale(d.x); })
-                    .attr("cy", function (d) { return yscale(d.y); })
-                    .attr("r", function (d) { return 2 * Math.sqrt(d.area); })
-                    .style("fill", function (d) { return color(d.color); })
-                    .on("mousedown", show_info);
-        };
+	slice.enter()
+		.insert("path")
+		.style("fill", function(d) { return color(d.data.label); })
+		.attr("class", "slice");
 
-        {% if mux %}
-            d3.json("/gdata?mux={{mux}}&muy={{muy}}", callback);
-        {% endif %}
+	slice		
+		.transition().duration(1000)
+		.attrTween("d", function(d) {
+			this._current = this._current || d;
+			var interpolate = d3.interpolate(this._current, d);
+			this._current = interpolate(0);
+			return function(t) {
+				return arc(interpolate(t));
+			};
+		})
 
-    </script>
+	slice.exit()
+		.remove();
+
+	/* ------- TEXT LABELS -------*/
+
+	var text = svg.select(".labels").selectAll("text")
+		.data(pie(data), key);
+
+	text.enter()
+		.append("text")
+		.attr("dy", ".35em")
+		.text(function(d) {
+			return d.data.label;
+		});
+	
+	function midAngle(d){
+		return d.startAngle + (d.endAngle - d.startAngle)/2;
+	}
+
+	text.transition().duration(1000)
+		.attrTween("transform", function(d) {
+			this._current = this._current || d;
+			var interpolate = d3.interpolate(this._current, d);
+			this._current = interpolate(0);
+			return function(t) {
+				var d2 = interpolate(t);
+				var pos = outerArc.centroid(d2);
+				pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
+				return "translate("+ pos +")";
+			};
+		})
+		.styleTween("text-anchor", function(d){
+			this._current = this._current || d;
+			var interpolate = d3.interpolate(this._current, d);
+			this._current = interpolate(0);
+			return function(t) {
+				var d2 = interpolate(t);
+				return midAngle(d2) < Math.PI ? "start":"end";
+			};
+		});
+
+	text.exit()
+		.remove();
+
+	/* ------- SLICE TO TEXT POLYLINES -------*/
+
+	var polyline = svg.select(".lines").selectAll("polyline")
+		.data(pie(data), key);
+	
+	polyline.enter()
+		.append("polyline");
+
+	polyline.transition().duration(1000)
+		.attrTween("points", function(d){
+			this._current = this._current || d;
+			var interpolate = d3.interpolate(this._current, d);
+			this._current = interpolate(0);
+			return function(t) {
+				var d2 = interpolate(t);
+				var pos = outerArc.centroid(d2);
+				pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+				return [arc.centroid(d2), outerArc.centroid(d2), pos];
+			};			
+		});
+	
+	polyline.exit()
+		.remove();
+};
+
+</script>
 
 			
 		</div>
