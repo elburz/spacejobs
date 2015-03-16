@@ -96,7 +96,7 @@ Embedded content
 img { border: 0; /* 1 */
 -ms-interpolation-mode: bicubic; /* 2 */ }
 /* * Corrects overflow displayed oddly in IE 9. */
-svg:not(:root) { overflow: hidden; }
+/*svg:not(:root) { overflow: hidden; }*/
 /* ==========================================================================
 Figures
 ========================================================================== */
