@@ -242,7 +242,7 @@ a.close-overlay.hidden { display: none }
 .sign-up { text-align: center; background-color: #fbfbfb;}
 .signup-input { border: solid 1px #d3d7d9; padding: 15px; width: 65%; color: #929292; font-style: italic; letter-spacing: 1px; }
 .submit-btn { background-color: #64c29e; color: #fff; border: solid 1px #64c29e; font-weight: 300; padding: 15px 50px; }
-section.sign_up { padding: 40px 0 40px 0; }
+section.sign_up { padding: 40px 0 40px 0; background-color: #fbfbfb;}
 footer { background-color: #f7f7f7; padding: 25px 0; }
 footer p { font-size: 13px; margin: 0; }
 .footer-leftcol p { text-align: left; }
