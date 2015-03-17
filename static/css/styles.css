@@ -204,7 +204,7 @@ header ul { padding-top: 35px; }
 header ul li { list-style: none; float: left; text-transform: uppercase; letter-spacing: 2px; }
 header ul li a { display: block; margin: 0 30px; color: #4d4959; }
 .r_spacer { margin-right: 180px; }
-.intro { padding: 60px 0; background-color: #fbfbfb; }
+.intro { padding: 60px 0; background-color: #f4f5fc; }
 .section-text { position: relative; height: 600px; }
 .nopadding { padding: 0 !important; margin: 0 !important; }
 .thin-sep { height: 1px; background-color: #d7d7d7; width: 50px; margin: 8% auto 0 auto; }
@@ -239,10 +239,10 @@ a.close-overlay.hidden { display: none }
 .discover { background-color: #282f35; padding: 70px 0; text-align: center; }
 .shop-btn { border: solid 1px #bbb; padding: 15px 50px; color: #fff; text-transform: uppercase; letter-spacing: 3px; font-weight: 400; }
 .shop-btn:hover, .shop-btn:focus { border: solid 1px #64c29e; }
-.sign-up { text-align: center; background-color: #fbfbfb;}
+.sign-up { text-align: center; background-color: #f4f5fc;}
 .signup-input { border: solid 1px #d3d7d9; padding: 15px; width: 65%; color: #929292; font-style: italic; letter-spacing: 1px; }
 .submit-btn { background-color: #64c29e; color: #fff; border: solid 1px #64c29e; font-weight: 300; padding: 15px 50px; }
-section.sign_up { padding: 40px 0 40px 0; background-color: #fbfbfb;}
+section.sign_up { padding: 40px 0 40px 0; background-color: #f4f5fc;}
 footer { background-color: #f7f7f7; padding: 25px 0; }
 footer p { font-size: 13px; margin: 0; }
 .footer-leftcol p { text-align: left; }
@@ -262,7 +262,7 @@ Styles
 svg {
 	width: 100%;
 	height: 450px;
-	background-color: #fbfbfb;
+	background-color: #f4f5fc;
 }
 
 path.slice{
