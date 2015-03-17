@@ -67,7 +67,7 @@ def main():
 	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.all())
 
 
-@app.route('/about')
+@app.route('/about', methods=['GET', 'POST'])
 def about():
 	# switch header if someone subscribes
 	subscribe_bool = False
@@ -87,7 +87,7 @@ def about():
 	return render_template("about.html", subscribe_bool=subscribe_bool)
 
 
-@app.route('/metrics')
+@app.route('/metrics', methods=['GET', 'POST'])
 def metrics():
 	# switch header if someone subscribes
 	subscribe_bool = False
@@ -106,7 +106,7 @@ def metrics():
 	return render_template("metrics.html", subscribe_bool=subscribe_bool)
 
 
-@app.route('/submit')
+@app.route('/submit', methods=['GET', 'POST'])
 def submit():
 	# switch header if someone subscribes
 	subscribe_bool = False
