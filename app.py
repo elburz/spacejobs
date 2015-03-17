@@ -34,21 +34,17 @@ class JobListing(db.Model):
 		return self.jobposition
 
 
-class JobListing1():
+class EmailListing(db.Model):
+	__tablename__ = 'emaillist'
 
-	def __init__(self):
-		self.id = 1
-		self.term = 'test'
-		self.location = '12345'
-		self.jobPosition = '67890'
-		self.department = 'asdfg'
-		self.agency = 'qwert'
-		self.datePosted = 'zxcvb'
-		self.link = 'hjk;g'
+	id = db.Column(db.Integer, primary_key=True)
+	email = db.Column(db.Text)
 
-jobTest = JobListing1()
+	def __init__(self, email):
+		self.email = email
 
-jobList = [jobTest, jobTest]
+	def __repr__(self):
+		return self.email
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -61,10 +57,11 @@ def main():
 		if request.form['submit'] == 'email_subscribe':
 			# grab info
 			email_address = request.form['email_address']
-			date = datetime.date.today()
 
 			# add to database here
-
+			emailAddition = EmailListing(email_address)
+			db.session.add(emailAddition)
+			db.session.commit()
 			# swap message with bool
 			subscribe_bool = True
 
