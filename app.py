@@ -1,7 +1,6 @@
 import os
 from flask import Flask, render_template, request
 from flask.ext.sqlalchemy import SQLAlchemy
-import datetime
 
 app = Flask(__name__)
 
@@ -65,23 +64,62 @@ def main():
 			# swap message with bool
 			subscribe_bool = True
 
-	# return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.all())
 	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.all())
-	
-	# return render_template("main.html", subscribe_bool=subscribe_bool)
 
 
 @app.route('/about')
 def about():
-	return render_template("about.html")
+	# switch header if someone subscribes
+	subscribe_bool = False
+	# if subscribe button clicked
+	if request.method == 'POST':
+		if request.form['submit'] == 'email_subscribe':
+			# grab info
+			email_address = request.form['email_address']
+
+			# add to database here
+			emailAddition = EmailListing(email_address)
+			db.session.add(emailAddition)
+			db.session.commit()
+			# swap message with bool
+			subscribe_bool = True
+
+	return render_template("about.html", subscribe_bool=subscribe_bool)
 
 
 @app.route('/metrics')
 def metrics():
-	return render_template("metrics.html")
+	# switch header if someone subscribes
+	subscribe_bool = False
+	# if subscribe button clicked
+	if request.method == 'POST':
+		if request.form['submit'] == 'email_subscribe':
+			# grab info
+			email_address = request.form['email_address']
+
+			# add to database here
+			emailAddition = EmailListing(email_address)
+			db.session.add(emailAddition)
+			db.session.commit()
+			# swap message with bool
+			subscribe_bool = True
+	return render_template("metrics.html", subscribe_bool=subscribe_bool)
 
 
 @app.route('/submit')
 def submit():
+	# switch header if someone subscribes
+	subscribe_bool = False
+	# if subscribe button clicked
+	if request.method == 'POST':
+		if request.form['submit'] == 'email_subscribe':
+			# grab info
+			email_address = request.form['email_address']
 
-	return render_template("submit.html")
+			# add to database here
+			emailAddition = EmailListing(email_address)
+			db.session.add(emailAddition)
+			db.session.commit()
+			# swap message with bool
+			subscribe_bool = True
+	return render_template("submit.html", subscribe_bool=subscribe_bool)
