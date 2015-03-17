@@ -123,4 +123,6 @@ def submit():
 			db.session.commit()
 			# swap message with bool
 			subscribe_bool = True
+		elif request.form['submit'] == 'job_submit':
+			return "Job submit button"
 	return render_template("submit.html", subscribe_bool=subscribe_bool)
