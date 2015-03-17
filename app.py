@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask.ext.sqlalchemy import SQLAlchemy
 import datetime
 
@@ -133,5 +133,10 @@ def submit():
 			dateposted = datetime.date.today()
 			dateposted = dateposted.strftime('%m-%d-%Y')
 			link = request.form['link']
-			return "Job submit button" + term + location + jobposition + department + agency + dateposted + link
+
+			# add to database here
+			jobAddition = JobListing(term, location, jobposition, department, agency, dateposted, link)
+			db.session.add(jobAddition)
+			db.session.commit()
+			return redirect(url_for('main'))
 	return render_template("submit.html", subscribe_bool=subscribe_bool)
