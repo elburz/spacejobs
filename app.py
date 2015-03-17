@@ -63,7 +63,8 @@ def main():
 			db.session.commit()
 			# swap message with bool
 			subscribe_bool = True
-
+			#today =
+			#yesterday = 
 	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.all())
 
 
