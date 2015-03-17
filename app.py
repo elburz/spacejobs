@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, request
 from flask.ext.sqlalchemy import SQLAlchemy
+import datetime
 
 app = Flask(__name__)
 
@@ -63,8 +64,8 @@ def main():
 			db.session.commit()
 			# swap message with bool
 			subscribe_bool = True
-			#today =
-			#yesterday = 
+			# today =
+			# yesterday =
 	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.all())
 
 
@@ -124,5 +125,13 @@ def submit():
 			# swap message with bool
 			subscribe_bool = True
 		elif request.form['submit'] == 'job_submit':
-			return "Job submit button"
+			term = request.form['term']
+			location = request.form['location']
+			jobposition = request.form['jobposition']
+			department = request.form['department']
+			agency = request.form['agency']
+			dateposted = datetime.date.today()
+			dateposted = dateposted.strftime('%m-%d-%Y')
+			link = request.form['link']
+			return "Job submit button" + term + location + jobposition + department + agency + dateposted + link
 	return render_template("submit.html", subscribe_bool=subscribe_bool)
