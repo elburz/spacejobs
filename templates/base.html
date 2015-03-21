@@ -52,7 +52,7 @@
 		            orderable: false,
 		            targets:   0
 		        } ],
-		        paging: false
+		        paging: false,
 		        drawCallback: function ( settings ) {
 		            var api = this.api();
 		            var rows = api.rows( {page:'current'} ).nodes();
@@ -65,10 +65,11 @@
 		                    );
 		 
 		                    last = group;
-		                }
-		            } );
-		        }
+						}
+					});
+				}
 		    });
+
 			// Order by the grouping
 		    $('#jobList tbody').on( 'click', 'tr.group', function () {
 		        var currentOrder = table.order()[0];
