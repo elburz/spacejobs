@@ -283,6 +283,7 @@ Datatables date grouping style
 tr.group,
 tr.group:hover {
 	font-size: 1.17em;
+	font-weight: 600;
 	font-style: bold;
     background-color: #ddd !important;
 }
