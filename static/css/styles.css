@@ -275,3 +275,13 @@ polyline{
 	stroke-width: 2px;
 	fill: none;
 }
+
+
+/* 
+Datatables date grouping style
+*/ 
+tr.group,
+tr.group:hover {
+	font-style: bold;
+    background-color: #ddd !important;
+}
