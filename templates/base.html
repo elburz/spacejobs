@@ -28,7 +28,12 @@
 		<script>
 		$(document).ready( function () {
 		    $('#jobList').DataTable({
-		    	responsive: true,
+		    	responsive: {
+		    		details: {
+		    			type: 'column',
+		    			target: 'tr'
+		    		}
+		    	},
 		    	 columns: [
 		            { "data": "term",       	className: "all" },
 		            { "data": "location"},
