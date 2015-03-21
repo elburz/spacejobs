@@ -52,6 +52,7 @@
 		            orderable: false,
 		            targets:   0
 		        } ],
+		        displayLength: 25,
 		        paging: false,
 		        drawCallback: function ( settings ) {
 		            var api = this.api();
@@ -71,15 +72,7 @@
 		    });
 
 			// Order by the grouping
-		    $('#jobList tbody').on( 'click', 'tr.group', function () {
-		        var currentOrder = table.order()[0];
-		        if ( currentOrder[0] === 6 && currentOrder[1] === 'asc' ) {
-		            table.order( [ 6, 'desc' ] ).draw();
-		        }
-		        else {
-		            table.order( [ 6, 'asc' ] ).draw();
-		        }
-		    } );
+
 
 
 		    new $.fn.dataTable.FixedHeader( table );
