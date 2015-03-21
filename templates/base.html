@@ -38,7 +38,7 @@
 		    	},
 		    	 columns: [
 		    	 	{ "data": "", className:"control"},
-		            { "data": "term",       	className: "all" },
+		            { "data": "term",       	className: "all none" },
 		            { "data": "location"},
 		            { "data": "jobposition",    className: "all" },
 		            { "data": "department", 	className: "none"},
@@ -53,7 +53,33 @@
 		            targets:   0
 		        } ],
 		        paging: false
+		        drawCallback: function ( settings ) {
+		            var api = this.api();
+		            var rows = api.rows( {page:'current'} ).nodes();
+		            var last=null;
+ 
+		            api.column(6, {page:'current'} ).data().each( function ( group, i ) {
+		                if ( last !== group ) {
+		                    $(rows).eq( i ).before(
+		                        '<tr class="group"><td colspan="5">'+group+'</td></tr>'
+		                    );
+		 
+		                    last = group;
+		                }
+		            } );
+		        }
 		    });
+			// Order by the grouping
+		    $('#jobList tbody').on( 'click', 'tr.group', function () {
+		        var currentOrder = table.order()[0];
+		        if ( currentOrder[0] === 6 && currentOrder[1] === 'asc' ) {
+		            table.order( [ 6, 'desc' ] ).draw();
+		        }
+		        else {
+		            table.order( [ 6, 'asc' ] ).draw();
+		        }
+		    } );
+
 
 		    new $.fn.dataTable.FixedHeader( table );
 		} );
