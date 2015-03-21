@@ -36,6 +36,11 @@
 		    			target: 'tr'
 		    		}
 		    	},
+		        columnDefs: [ {
+		            className: 'control',
+		            orderable: false,
+		            targets:   0
+		        } ],
 		    	 columns: [
 		            { "data": "term",       	className: "all" },
 		            { "data": "location"},
@@ -46,11 +51,6 @@
 		            { "data": "link", 			className: "none"}
 		        ],
 		        order: [[5, "desc"]],
-		        columnDefs: [ {
-		            className: 'control',
-		            orderable: false,
-		            targets:   0
-		        } ],
 		        paging: false
 		    });
 
