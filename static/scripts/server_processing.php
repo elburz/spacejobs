@@ -18,11 +18,6 @@
  * Easy set variables
  */
 
-function pg_connection_string_from_database_url() {
-extract(parse_url($_ENV["DATABASE_URL"]));
-return "user=$user pass=$pass host=$host db=" . substr($path, 1); # <- you may want to add sslmode=require there too
-}
-
 // DB table to use
 $table = 'scrapedresults';
 
@@ -44,7 +39,11 @@ $columns = array(
 );
 
 // SQL server connection information
-$sql_details = array(pg_connection_string_from_database_url
+$sql_details = array(
+	'user' => 'rshxhlpvyizqlx',
+	'pass' => 'QpX2BJsjrDHiuF4VhrP6jYkIdJ',
+	'db'   => 'd3mhuhudar4m8c',
+	'host' => 'ec2-184-73-194-196.compute-1.amazonaws.com'
 );
 
 
@@ -55,7 +54,6 @@ $sql_details = array(pg_connection_string_from_database_url
 
 require( 'ssp.class.php' );
 
-echo "here i am!!!!!!!!!!!!!!"
 echo json_encode(
 	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
 );
