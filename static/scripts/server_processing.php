@@ -28,7 +28,7 @@ $primaryKey = 'id';
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
-$columns = array(
+$columns =
 	array( 'db' => 'term', 'dt' => 1 ),
 	array( 'db' => 'location',  'dt' => 2 ),
 	array( 'db' => 'jobposition',   'dt' => 3 ),

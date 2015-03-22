@@ -42,7 +42,38 @@
 		    		}
 		    	},
 		    	
-				
+			columns: [
+		    	 	{ "data": "", className:"control"},
+		            { "data": "term",       	className: "all none" },
+		            { "data": "location"},
+		            { "data": "jobposition",    className: "all" },
+		            { "data": "department", 	className: "none"},
+		            { "data": "agency"},
+		            { "data": "dateposted",     className: "none"},
+		            { "data": "link", 			className: "none"}
+		        ],
+		        order: [[6, "desc"]],
+		        columnDefs: [ {
+		            className: 'control',
+		            orderable: false,
+		            targets:   0
+		        } ],
+		        displayLength: 25,
+		        drawCallback: function ( settings ) {
+		            var api = this.api();
+		            var rows = api.rows( {page:'current'} ).nodes();
+		            var last=null;
+ 
+		            api.column(6, {page:'current'} ).data().each( function ( group, i ) {
+		                if ( last !== group ) {
+		                    $(rows).eq( i ).before(
+		                        '<tr class="group"><td colspan="5" style="font-weight:600;">'+group+'</td></tr>'
+		                    );
+		 
+		                    last = group;
+						}
+					});
+				},	
 		    });
 
 
