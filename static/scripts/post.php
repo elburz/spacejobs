@@ -18,33 +18,43 @@
  * Easy set variables
  */
 
-function pg_connection_string_from_database_url() {
-extract(parse_url($_ENV["DATABASE_URL"]));
-return "user=$user pass=$pass host=$host db=" . substr($path, 1); # <- you may want to add sslmode=require there too
-}
-
 // DB table to use
-$table = 'scrapedresults';
+$table = 'datatables_demo';
 
 // Table's primary key
 $primaryKey = 'id';
 
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
-// parameter represents the DataTables column identifier. In this case simple
-// indexes
+// parameter represents the DataTables column identifier. In this case object
+// parameter names
 $columns = array(
-	array( 'db' => 'term', 'dt' => 0 ),
-	array( 'db' => 'location',  'dt' => 1 ),
-	array( 'db' => 'jobposition',   'dt' => 2 ),
-	array( 'db' => 'department',     'dt' => 3 ),
-	array( 'db' => 'agency',     'dt' => 4 ),
-	array( 'db' => 'dateposted',     'dt' => 5 ),
-	array( 'db' => 'link',     'dt' => 6 )
+	array( 'db' => 'first_name', 'dt' => 'first_name' ),
+	array( 'db' => 'last_name',  'dt' => 'last_name' ),
+	array( 'db' => 'position',   'dt' => 'position' ),
+	array( 'db' => 'office',     'dt' => 'office' ),
+	array(
+		'db'        => 'start_date',
+		'dt'        => 'start_date',
+		'formatter' => function( $d, $row ) {
+			return date( 'jS M y', strtotime($d));
+		}
+	),
+	array(
+		'db'        => 'salary',
+		'dt'        => 'salary',
+		'formatter' => function( $d, $row ) {
+			return '$'.number_format($d);
+		}
+	)
 );
 
 // SQL server connection information
-$sql_details = array(pg_connection_string_from_database_url
+$sql_details = array(
+	'user' => '',
+	'pass' => '',
+	'db'   => '',
+	'host' => ''
 );
 
 
@@ -56,7 +66,6 @@ $sql_details = array(pg_connection_string_from_database_url
 require( 'ssp.class.php' );
 
 echo json_encode(
-	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
+	SSP::simple( $_POST, $sql_details, $table, $primaryKey, $columns )
 );
-
 

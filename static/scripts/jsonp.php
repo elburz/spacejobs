@@ -18,13 +18,8 @@
  * Easy set variables
  */
 
-function pg_connection_string_from_database_url() {
-extract(parse_url($_ENV["DATABASE_URL"]));
-return "user=$user pass=$pass host=$host db=" . substr($path, 1); # <- you may want to add sslmode=require there too
-}
-
 // DB table to use
-$table = 'scrapedresults';
+$table = 'datatables_demo';
 
 // Table's primary key
 $primaryKey = 'id';
@@ -34,17 +29,31 @@ $primaryKey = 'id';
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-	array( 'db' => 'term', 'dt' => 0 ),
-	array( 'db' => 'location',  'dt' => 1 ),
-	array( 'db' => 'jobposition',   'dt' => 2 ),
-	array( 'db' => 'department',     'dt' => 3 ),
-	array( 'db' => 'agency',     'dt' => 4 ),
-	array( 'db' => 'dateposted',     'dt' => 5 ),
-	array( 'db' => 'link',     'dt' => 6 )
+	array( 'db' => 'first_name', 'dt' => 0 ),
+	array( 'db' => 'last_name',  'dt' => 1 ),
+	array( 'db' => 'position',   'dt' => 2 ),
+	array( 'db' => 'office',     'dt' => 3 ),
+	array(
+		'db'        => 'start_date',
+		'dt'        => 4,
+		'formatter' => function( $d, $row ) {
+			return date( 'jS M y', strtotime($d));
+		}
+	),
+	array(
+		'db'        => 'salary',
+		'dt'        => 5,
+		'formatter' => function( $d, $row ) {
+			return '$'.number_format($d);
+		}
+	)
 );
 
-// SQL server connection information
-$sql_details = array(pg_connection_string_from_database_url
+$sql_details = array(
+	'user' => '',
+	'pass' => '',
+	'db'   => '',
+	'host' => ''
 );
 
 
@@ -52,11 +61,9 @@ $sql_details = array(pg_connection_string_from_database_url
  * If you just want to use the basic configuration for DataTables with PHP
  * server-side, there is no need to edit below this line.
  */
-
 require( 'ssp.class.php' );
 
-echo json_encode(
+echo $_GET['callback'].'('.json_encode(
 	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
-);
-
+).');';
 

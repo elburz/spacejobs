@@ -30,20 +30,7 @@
 						<th> Link </th>
 					</tr>
 				</tfoot>
-				<tbody>
-				{% for listing in jobPostings %}
-					<tr>
-						<td></td>
-						<td> {{listing.term}} </td>
-						<td> {{listing.location}} </td>
-						<td> {{listing.jobposition}} </td>
-						<td> {{listing.department}} </td>
-						<td> {{listing.agency}} </td>
-						<td> {{listing.dateposted}} </td>
-						<td> <a href={{listing.link}}>Apply by clicking here!</a> </td>
-					</tr>
-				{% endfor %}
-				</tbody>
+				
 			</table>
 		</div>
 	</div>
