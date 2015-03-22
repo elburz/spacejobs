@@ -29,13 +29,13 @@ $primaryKey = 'id';
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-	array( 'db' => 'term', 'dt' => 0 ),
-	array( 'db' => 'location',  'dt' => 1 ),
-	array( 'db' => 'jobposition',   'dt' => 2 ),
-	array( 'db' => 'department',     'dt' => 3 ),
-	array( 'db' => 'agency',     'dt' => 4 ),
-	array( 'db' => 'dateposted',     'dt' => 5 ),
-	array( 'db' => 'link',     'dt' => 6 )
+	array( 'db' => 'term', 'dt' => 1 ),
+	array( 'db' => 'location',  'dt' => 2 ),
+	array( 'db' => 'jobposition',   'dt' => 3 ),
+	array( 'db' => 'department',     'dt' => 4 ),
+	array( 'db' => 'agency',     'dt' => 5 ),
+	array( 'db' => 'dateposted',     'dt' => 6 ),
+	array( 'db' => 'link',     'dt' => 7 )
 );
 
 // SQL server connection information

@@ -28,16 +28,13 @@
 		<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/dataTables.fixedHeader.min.js') }}"></script>
 		
 		<script>
-
-
-
 		//actual table setup 
 		$(document).ready( function () {
 		    var table = $('#jobList').DataTable({
 		    	processing: true,
 		        serverSide: true,
-		        ajax: '{{ url_for('static', filename='scripts/server_processing.php') }}',
-		        
+		        ajax: '/static/scripts/server_processing.php',
+
 		    	responsive: {
 		    		details: {
 		    			type: 'column',
