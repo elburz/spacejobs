@@ -55,6 +55,7 @@ $sql_details = array(pg_connection_string_from_database_url
 
 require( 'ssp.class.php' );
 
+echo "here i am!!!!!!!!!!!!!!"
 echo json_encode(
 	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
 );
