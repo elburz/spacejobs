@@ -26,10 +26,6 @@
     $gaSql['db']         = "d3mhuhudar4m8c";
     $gaSql['server']     = "ec2-184-73-194-196.compute-1.amazonaws.com";
      
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-     * If you just want to use the basic configuration for DataTables with PHP server-side, there is
-     * no need to edit below this line
-     */
      
     /*
      * DB connection
