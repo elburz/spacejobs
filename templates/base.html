@@ -147,13 +147,6 @@
 		//actual table setup 
 		$(document).ready( function () {
 		    var table = $('#jobList').DataTable({
-		    	processing: true,
-		        serverSide: true,
-		        ajax: $.fn.dataTable.pipeline( {
-		            url: 'scripts/server_processing.php',
-		            pages: 5 // number of pages to cache
-		        } )
-
 		    	responsive: {
 		    		details: {
 		    			type: 'column',
@@ -191,7 +184,13 @@
 		                    last = group;
 						}
 					});
-				}
+				},
+				processing: true,
+		        serverSide: true,
+		        ajax: $.fn.dataTable.pipeline( {
+		            url: '{{ url_for('static', filename='scripts/server_processing.php') }}',
+		            pages: 5 // number of pages to cache
+		        } )
 		    });
 
 
