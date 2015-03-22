@@ -32,6 +32,7 @@
 		    var table = $('#jobList').DataTable({
 		    	responsive: {
 		    		details: {
+		    			true,
 		    			type: 'column',
 		    			target: 'tr'
 		    		}
@@ -72,7 +73,7 @@
 		    });
 
 
-		    new $.fn.dataTable.FixedHeader( table );
+		    new $.fn.dataTable.FixedHeader.Responsive( table );
 		} );
 		</script>
 
