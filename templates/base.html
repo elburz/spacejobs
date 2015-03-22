@@ -34,6 +34,10 @@
 		//actual table setup 
 		$(document).ready( function () {
 		    var table = $('#jobList').DataTable({
+		    	processing: true,
+		        serverSide: true,
+		        ajax: '{{ url_for('static', filename='scripts/server_processing.php') }}',
+		        
 		    	responsive: {
 		    		details: {
 		    			type: 'column',
@@ -72,9 +76,7 @@
 						}
 					});
 				},
-				processing: true,
-		        serverSide: true,
-		        ajax: '{{ url_for('static', filename='scripts/server_processing.php') }}'
+				
 		    });
 
 
