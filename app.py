@@ -66,7 +66,7 @@ def main():
 			subscribe_bool = True
 			# today =
 			# yesterday =
-	return render_template("main.html", subscribe_bool=subscribe_bool)
+	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.all())
 
 
 @app.route('/about', methods=['GET', 'POST'])
