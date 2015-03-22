@@ -26,7 +26,7 @@
     $gaSql['db']         = "d3mhuhudar4m8c";
     $gaSql['server']     = "ec2-184-73-194-196.compute-1.amazonaws.com";
      
-     
+
     /*
      * DB connection
      */
@@ -173,7 +173,7 @@
         }
         $output['aaData'][] = $row;
     }
-     
+    echo ($output);
     echo json_encode( $output );
      
     // Free resultset
