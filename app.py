@@ -124,7 +124,7 @@ def about():
 def submit():
     # switch header if someone subscribes
     subscribe_bool = False
-    # submit_bool = False
+    submit_bool = False
 
     # if subscribe button clicked
     if request.method == 'POST':
@@ -149,7 +149,7 @@ def submit():
             dateposted = dateposted.strftime('%m-%d-%Y')
             link = request.form['link']
 
-            #submit_bool = True
+            submit_bool = True
 
             # might be better to email back to me for checking
             # add to database here
