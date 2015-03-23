@@ -156,7 +156,7 @@ def submit():
             #mail.send(msg)
 
             # flash message as well
-            return redirect(url_for("main.html"))
+            return redirect(url_for('main'))
 
     return render_template("submit.html")
 
