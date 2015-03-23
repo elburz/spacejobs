@@ -138,7 +138,7 @@ def submit():
             #db.session.commit()
             # swap message with bool
             subscribe_bool = True
-        elif request.form['submit'] == 'submit':
+        elif request.form['submit'] == 'job_submit':
             term = request.form['term']
             location = request.form['location']
             jobposition = request.form['jobposition']
