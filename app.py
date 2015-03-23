@@ -183,4 +183,4 @@ def submit():
         # flash message as well
         #return redirect(url_for('main'))
 
-    return render_template("submit.html", subscribe_bool=subscribe_bool, submit_bool=submit_bool)
+    return render_template("submit.html", submit_bool=submit_bool)
