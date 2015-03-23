@@ -19,112 +19,111 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['MAIN_SCRAPER_DB_URL']
 db = SQLAlchemy(app)
 
 
-
 class JobListing(db.Model):
-	__tablename__ = 'scrapedresults'
+    __tablename__ = 'scrapedresults'
 
-	id = db.Column(db.Integer, primary_key=True)
-	term = db.Column(db.Text)
-	location = db.Column(db.Text)
-	jobposition = db.Column(db.Text)
-	department = db.Column(db.Text)
-	agency = db.Column(db.Text)
-	dateposted = db.Column(db.Text)
-	link = db.Column(db.Text)
+    id = db.Column(db.Integer, primary_key=True)
+    term = db.Column(db.Text)
+    location = db.Column(db.Text)
+    jobposition = db.Column(db.Text)
+    department = db.Column(db.Text)
+    agency = db.Column(db.Text)
+    dateposted = db.Column(db.Text)
+    link = db.Column(db.Text)
 
-	def __init__(self, term, location, jobposition, department, agency, dateposted, link):
-		self.term = term
-		self.location = location
-		self.jobposition = jobposition
-		self.department = department
-		self.agency = agency
-		self.dateposted = dateposted
-		self.link = link
+    def __init__(self, term, location, jobposition, department, agency, dateposted, link):
+        self.term = term
+        self.location = location
+        self.jobposition = jobposition
+        self.department = department
+        self.agency = agency
+        self.dateposted = dateposted
+        self.link = link
 
-	def __repr__(self):
-		return self.jobposition
+    def __repr__(self):
+        return self.jobposition
 
 
 class EmailListing(db.Model):
-	__tablename__ = 'emaillist'
+    __tablename__ = 'emaillist'
 
-	id = db.Column(db.Integer, primary_key=True)
-	email = db.Column(db.Text)
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.Text)
 
-	def __init__(self, email):
-		self.email = email
+    def __init__(self, email):
+        self.email = email
 
-	def __repr__(self):
-		return self.email
+    def __repr__(self):
+        return self.email
 
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
+    # switch header if someone subscribes
+    subscribe_bool = False
+    # if subscribe button clicked
+    if request.method == 'POST':
+        if request.form['submit'] == 'Subscribe':
+            # grab info
+            # email_address = request.form['email_address']
 
-	# switch header if someone subscribes
-	subscribe_bool = False
-	# if subscribe button clicked
-	if request.method == 'POST':
-		if request.form['submit'] == 'Subscribe':
-			# grab info
-			#email_address = request.form['email_address']
+            # add to database here
+            #emailAddition = EmailListing(email_address)
+            #db.session.add(emailAddition)
+            #db.session.commit()
+            # swap message with bool
+            subscribe_bool = True
+        '''
+        elif request.form['submit'] == 'search_submit':
+            search_by = request.form['searchby']
+            #search_term = request.form['term']
+            #search_term = '%' + search_term + '%'
+            # add % to search term
 
-			# add to database here
-			#emailAddition = EmailListing(email_address)
-			#db.session.add(emailAddition)
-			#db.session.commit()
-			# swap message with bool
-			subscribe_bool = True
-		'''
-		elif request.form['submit'] == 'search_submit':
-			search_by = request.form['searchby']
-			#search_term = request.form['term']
-			#search_term = '%' + search_term + '%'
-			# add % to search term
+            if search_by == 'Term':
+                testList = JobListing.query.fitler(JobListing.department.like('blue')).order_by(JobListing.dateposted.desc()).limit(100)
+            elif search_by == 'Department':
+                testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
+            elif search_by == 'Location':
+                testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
+            elif search_by == 'Agency':
+                testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
+            elif search_by == 'Job Position':
+                testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
 
-			if search_by == 'Term':
-				testList = JobListing.query.fitler(JobListing.department.like('blue')).order_by(JobListing.dateposted.desc()).limit(100)
-			elif search_by == 'Department':
-				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
-			elif search_by == 'Location':
-				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
-			elif search_by == 'Agency':
-				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
-			elif search_by == 'Job Position':
-				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
+            return('worked')
 
-			return('worked')
-
-			# return(search_query)
-			'''
-	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(500))
+            # return(search_query)
+            '''
+    return render_template("main.html", subscribe_bool=subscribe_bool,
+                           jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(500))
 
 
 @app.route('/about', methods=['GET', 'POST'])
 def about():
-	# switch header if someone subscribes
-	subscribe_bool = False
-	# if subscribe button clicked
-	if request.method == 'POST':
-		if request.form['submit'] == 'Subscribe':
-			# grab info
-			#email_address = request.form['email_address']
+    # switch header if someone subscribes
+    subscribe_bool = False
+    # if subscribe button clicked
+    if request.method == 'POST':
+        if request.form['submit'] == 'Subscribe':
+            # grab info
+            # email_address = request.form['email_address']
 
-			# add to database here
-			#emailAddition = EmailListing(email_address)
-			#db.session.add(emailAddition)
-			#db.session.commit()
-			# swap message with bool
-			subscribe_bool = True
+            # add to database here
+            #emailAddition = EmailListing(email_address)
+            #db.session.add(emailAddition)
+            #db.session.commit()
+            # swap message with bool
+            subscribe_bool = True
 
-	return render_template("about.html", subscribe_bool=subscribe_bool)
+    return render_template("about.html", subscribe_bool=subscribe_bool)
 
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     # switch header if someone subscribes
     subscribe_bool = False
-    #submit_bool = False
+    # submit_bool = False
 
     # if subscribe button clicked
     if request.method == 'POST':
@@ -158,11 +157,12 @@ def submit():
 
         # send job back to email for reference
         msg = Message('Job posting attached', sender="spacejobs.us@gmail.com", recipients=["spacejobs.us@gmail.com"])
-        msg.body = str(term) + '\n' + str(location) + '\n' + str(jobposition) + '\n' + str(department) + '\n' + str(agency) + '\n' + str(dateposted) + '\n' + str(link)
+        msg.body = str(term) + '\n' + str(location) + '\n' + str(jobposition) + '\n' + str(department) + '\n' + str(
+            agency) + '\n' + str(dateposted) + '\n' + str(link)
         mail.send(msg)
 
         # flash message as well
-        return render_template("main.html", subscribe_bool=subscribe_bool)
+        return redirect(url_for("main.html"), subscribe_bool=subscribe_bool)
 
     return render_template("submit.html", subscribe_bool=subscribe_bool)
 
@@ -178,7 +178,7 @@ def metrics():
             # email_address = request.form['email_address']
 
             # add to database here
-            #emailAddition = EmailListing(email_address)
+            # emailAddition = EmailListing(email_address)
             #db.session.add(emailAddition)
             #db.session.commit()
             # swap message with bool
