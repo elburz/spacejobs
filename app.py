@@ -141,9 +141,10 @@ def metrics():
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
-	# switch header if someone subscribes
+    # switch header if someone subscribes
     subscribe_bool = False
     submit_bool = False
+
     # if subscribe button clicked
     if request.method == 'POST':
         if request.form['submit'] == 'Subscribe':
@@ -156,7 +157,7 @@ def submit():
             #db.session.commit()
             # swap message with bool
             subscribe_bool = True
-        elif request.form['submit'] == 'job_submit':
+        elif request.form['submit'] == 'submit':
             term = request.form['term']
             location = request.form['location']
             jobposition = request.form['jobposition']
