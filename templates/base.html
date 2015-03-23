@@ -124,7 +124,9 @@
 								<button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="submit-btn">GO</button>
 							</form>
 						{% endif %}
-						
+						{% if submit_bool == True %}
+							<h2 class="logo-header">Thank you for submitting a job!</h2>
+						{% endif %}
 					</div>
 				</div>
 			</div>
