@@ -54,14 +54,14 @@ def main():
 	subscribe_bool = False
 	# if subscribe button clicked
 	if request.method == 'POST':
-		if request.form['submit'] == 'email_subscribe':
+		if request.form['submit'] == 'Subscribe':
 			# grab info
-			email_address = request.form['email_address']
+			#email_address = request.form['email_address']
 
 			# add to database here
-			emailAddition = EmailListing(email_address)
-			db.session.add(emailAddition)
-			db.session.commit()
+			#emailAddition = EmailListing(email_address)
+			#db.session.add(emailAddition)
+			#db.session.commit()
 			# swap message with bool
 			subscribe_bool = True
 		'''
