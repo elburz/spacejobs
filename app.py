@@ -67,11 +67,11 @@ def main():
 			# today =
 			# yesterday =
 		elif request.form['submit'] == 'search_submit':
-			search_by = request.form['searchby']
-			search_term = request.form['term']
+			# search_by = request.form['searchby']
+			# search_term = request.form['term']
 			# add % to search term
-			a = "SELECT * FROM Customers WHERE %s LIKE %s" % ('term', 'Call')
-			testList = JobListing.query.from_statement(text(a)).order_by(JobListing.dateposted.desc()).limit(250)
+			# a = "SELECT * FROM Customers WHERE %s LIKE %s" % ('term', 'Call')
+			testList = JobListing.query.from_statement(text("SELECT * FROM Customers WHERE %s LIKE %s" % ('term', 'Call'))).order_by(JobListing.dateposted.desc()).limit(250)
 			print(testList)
 			return('worked ok')
 			#search_query = JobListing.query.from_statement(text()).order_by(JobListing.dateposted.desc()).limit(250)
