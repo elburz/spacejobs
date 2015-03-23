@@ -1,12 +1,23 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.mail import Mail, Message
 import datetime
 
 app = Flask(__name__)
 
+# config and setup email
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = 'spacejobs.us@gmail.com'
+app.config['MAIL_PASSWORD'] = 'priA-glOl-R'
+mail = Mail(app)
+
+# config and setup db
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['MAIN_SCRAPER_DB_URL']
 db = SQLAlchemy(app)
+
 
 
 class JobListing(db.Model):
@@ -156,9 +167,15 @@ def submit():
 
 			# might be better to email back to me for checking
 			# add to database here
-			jobAddition = JobListing(term, location, jobposition, department, agency, dateposted, link)
-			db.session.add(jobAddition)
-			db.session.commit()
+			#jobAddition = JobListing(term, location, jobposition, department, agency, dateposted, link)
+			#db.session.add(jobAddition)
+			#db.session.commit()
+
+            # send job back to email for reference
+            msg = Message('Job posting attached', sender="spacejobs.us@gmail.com", recipients=["spacejobs.us@gmail.com"])
+            msg.body = term + '\n' + location + '\n' + jobposition + '\n' + department + '\n' + agency + '\n' + dateposted + '\n' + link
+            mail.send(msg)
+
 			# flash message as well
 			return redirect(url_for('main'))
 	return render_template("submit.html", subscribe_bool=subscribe_bool)
