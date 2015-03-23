@@ -71,7 +71,9 @@ def main():
 			search_term = request.form['term']
 			# add % to search term
 			a = "SELECT * FROM Customers WHERE %s LIKE %s" % ('term', 'Call')
-			return(JobListing.query.from_statement(text(a)).order_by(JobListing.dateposted.desc()).limit(250))
+			testList = JobListing.query.from_statement(text(a)).order_by(JobListing.dateposted.desc()).limit(250)
+			print(testList)
+			return('worked ok')
 			#search_query = JobListing.query.from_statement(text()).order_by(JobListing.dateposted.desc()).limit(250)
 			# return(search_query)
 	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(100))
