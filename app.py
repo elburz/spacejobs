@@ -72,7 +72,7 @@ def main():
 			# add % to search term
 
 			if search_by == 'Term':
-
+				testList = JobListing.query.fitler(JobListing.department.like('%' + search_term + '%')).order_by(JobListing.dateposted.desc()).limit(250)
 			elif search_by == 'Department':
 				testList = JobListing.query.fitler(JobListing.department.like('%' + search_term + '%')).order_by(JobListing.dateposted.desc()).limit(250)
 			elif search_by == 'Location':
