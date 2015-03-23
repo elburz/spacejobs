@@ -72,7 +72,8 @@ def main():
             #db.session.add(emailAddition)
             #db.session.commit()
             # swap message with bool
-            subscribe_bool = True
+            #subscribe_bool = True
+            pass
         '''
         elif request.form['submit'] == 'search_submit':
             search_by = request.form['searchby']
@@ -95,8 +96,7 @@ def main():
 
             # return(search_query)
             '''
-    return render_template("main.html", subscribe_bool=subscribe_bool,
-                           jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(500))
+    return render_template("main.html", jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(500))
 
 
 @app.route('/about', methods=['GET', 'POST'])
@@ -114,9 +114,10 @@ def about():
             #db.session.add(emailAddition)
             #db.session.commit()
             # swap message with bool
-            subscribe_bool = True
+            # subscribe_bool = True
+            pass
 
-    return render_template("about.html", subscribe_bool=subscribe_bool)
+    return render_template("about.html")
 
 
 @app.route('/submit', methods=['GET', 'POST'])
@@ -136,7 +137,8 @@ def submit():
             #db.session.add(emailAddition)
             #db.session.commit()
             # swap message with bool
-            subscribe_bool = True
+            # subscribe_bool = True
+            pass
         elif request.form['submit'] == 'job_submit':
             term = request.form['term']
             location = request.form['location']
@@ -163,7 +165,7 @@ def submit():
         # flash message as well
         #return redirect(url_for("main.html"), subscribe_bool=subscribe_bool)
 
-    return render_template("submit.html", subscribe_bool=subscribe_bool)
+    return render_template("submit.html")
 
 
 @app.route('/metrics', methods=['GET', 'POST'])
@@ -182,4 +184,4 @@ def metrics():
             #db.session.commit()
             # swap message with bool
             subscribe_bool = True
-    return render_template("metrics.html", subscribe_bool=subscribe_bool)
+    return render_template("metrics.html")
