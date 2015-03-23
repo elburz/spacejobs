@@ -7,7 +7,6 @@ import datetime
 app = Flask(__name__)
 
 # config and setup email
-'''
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_SSL'] = True
@@ -15,7 +14,7 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'spacejobs.us@gmail.com'
 app.config['MAIL_PASSWORD'] = 'priA-glOl-R'
 mail = Mail(app)
-'''
+
 # config and setup db
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['MAIN_SCRAPER_DB_URL']
 db = SQLAlchemy(app)
@@ -128,7 +127,7 @@ def about():
 def submit():
     # switch header if someone subscribes
     # subscribe_bool = False
-    # submit_bool = False
+    submit_bool = False
 
     # if subscribe button clicked
     if request.method == 'POST':
@@ -142,7 +141,7 @@ def submit():
             dateposted = dateposted.strftime('%m-%d-%Y')
             link = request.form['link']
 
-            #submit_bool = True
+            submit_bool = True
 
             # might be better to email back to me for checking
             # add to database here
@@ -151,14 +150,14 @@ def submit():
             #db.session.commit()
 
             # send job back to email for reference
-            #msg = Message('Job posting attached', sender="spacejobs.us@gmail.com", recipients=["spacejobs.us@gmail.com"])
-            #msg.body = str(term) + '\n' + str(location) + '\n' + str(jobposition) + '\n' + str(department) + '\n' + str(agency) + '\n' + str(dateposted) + '\n' + str(link)
-            #mail.send(msg)
+            msg = Message('Job posting attached', sender="spacejobs.us@gmail.com", recipients=["spacejobs.us@gmail.com"])
+            msg.body = str(term) + '\n' + str(location) + '\n' + str(jobposition) + '\n' + str(department) + '\n' + str(agency) + '\n' + str(dateposted) + '\n' + str(link)
+            mail.send(msg)
 
             # flash message as well
-            return redirect(url_for('main'))
+            #return redirect(url_for('main'))
 
-    return render_template("submit.html")
+    return render_template("submit.html", submit_bool=submit_bool)
 
 
 @app.route('/metrics', methods=['GET', 'POST'])
