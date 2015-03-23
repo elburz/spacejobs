@@ -81,7 +81,9 @@ def main():
 				testList = JobListing.query.fitler(JobListing.department.like('%' + search_term + '%')).order_by(JobListing.dateposted.desc()).limit(250)
 			elif search_by == 'Job Position':
 				testList = JobListing.query.fitler(JobListing.department.like('%' + search_term + '%')).order_by(JobListing.dateposted.desc()).limit(250)
-			return(testList)
+			for i in testList:
+				list = i.id + '   ' 
+			return(list)
 			# search_query = JobListing.query.from_statement(text()).order_by(JobListing.dateposted.desc()).limit(250)
 			# return(search_query)
 	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(100))
