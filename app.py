@@ -67,14 +67,22 @@ def main():
 			# today =
 			# yesterday =
 		elif request.form['submit'] == 'search_submit':
-			# search_by = request.form['searchby']
-			# search_term = request.form['term']
+			search_by = request.form['searchby']
+			search_term = request.form['term']
 			# add % to search term
-			# a = "SELECT * FROM Customers WHERE %s LIKE %s" % ('term', 'Call')
-			testList = JobListing.query.from_statement(text("SELECT * FROM Customers WHERE %s LIKE %s" % ('term', 'Call'))).order_by(JobListing.dateposted.desc()).limit(250)
-			print(testList)
-			return('worked ok')
-			#search_query = JobListing.query.from_statement(text()).order_by(JobListing.dateposted.desc()).limit(250)
+
+			if search_by == 'Term':
+
+			elif search_by == 'Department':
+				testList = JobListing.query.fitler(JobListing.department.like('%' + search_term + '%')).order_by(JobListing.dateposted.desc()).limit(250)
+			elif search_by == 'Location':
+				testList = JobListing.query.fitler(JobListing.department.like('%' + search_term + '%')).order_by(JobListing.dateposted.desc()).limit(250)
+			elif search_by == 'Agency':
+				testList = JobListing.query.fitler(JobListing.department.like('%' + search_term + '%')).order_by(JobListing.dateposted.desc()).limit(250)
+			elif search_by == 'Job Position':
+				testList = JobListing.query.fitler(JobListing.department.like('%' + search_term + '%')).order_by(JobListing.dateposted.desc()).limit(250)
+			return(testList)
+			# search_query = JobListing.query.from_statement(text()).order_by(JobListing.dateposted.desc()).limit(250)
 			# return(search_query)
 	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(100))
 
