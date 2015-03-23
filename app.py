@@ -69,8 +69,11 @@ def main():
 		elif request.form['submit'] == 'search_submit':
 			search_by = request.form['searchby']
 			search_term = request.form['term']
-			return(search_by + ' ' + search_term)
-			
+			# add % to search term
+			a = "SELECT * FROM Customers WHERE %s LIKE %s;" % (search_by, search_term)
+			return(a)
+			#search_query = JobListing.query.from_statement(text()).order_by(JobListing.dateposted.desc()).limit(250)
+			# return(search_query)
 	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(100))
 
 
