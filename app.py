@@ -8,12 +8,12 @@ app = Flask(__name__)
 
 # config and setup email
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
+app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'spacejobs.us@gmail.com'
 app.config['MAIL_PASSWORD'] = 'priA-glOl-R'
-mail = Mail(app)
+#mail = Mail(app)
 
 # config and setup db
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['MAIN_SCRAPER_DB_URL']
@@ -74,7 +74,7 @@ def main():
             #db.session.commit()
             # swap message with bool
             #subscribe_bool = True
-            pass
+            continue
         '''
         elif request.form['submit'] == 'search_submit':
             search_by = request.form['searchby']
@@ -116,7 +116,7 @@ def about():
             #db.session.commit()
             # swap message with bool
             # subscribe_bool = True
-            pass
+            continue
 
     return render_template("about.html")
 
@@ -139,7 +139,7 @@ def submit():
             #db.session.commit()
             # swap message with bool
             # subscribe_bool = True
-            pass
+            continue
         elif request.form['submit'] == 'job_submit':
             term = request.form['term']
             location = request.form['location']
@@ -185,5 +185,5 @@ def metrics():
             #db.session.commit()
             # swap message with bool
             #subscribe_bool = True
-            pass
+            continue
     return render_template("metrics.html")
