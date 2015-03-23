@@ -83,7 +83,7 @@ def main():
 			elif search_by == 'Job Position':
 				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
 '''
-			return('worked')
+			return(testList)
 
 			# return(search_query)
 	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(100))
