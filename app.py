@@ -143,6 +143,7 @@ def metrics():
 def submit():
 	# switch header if someone subscribes
     subscribe_bool = False
+    submit_bool = False
     # if subscribe button clicked
     if request.method == 'POST':
         if request.form['submit'] == 'Subscribe':
@@ -165,6 +166,8 @@ def submit():
             dateposted = dateposted.strftime('%m-%d-%Y')
             link = request.form['link']
 
+            submit_bool = True
+
         # might be better to email back to me for checking
         # add to database here
         # jobAddition = JobListing(term, location, jobposition, department, agency, dateposted, link)
@@ -174,8 +177,9 @@ def submit():
         # send job back to email for reference
         msg = Message('Job posting attached', sender="spacejobs.us@gmail.com", recipients=["spacejobs.us@gmail.com"])
         msg.body = term + '\n' + location + '\n' + jobposition + '\n' + department + '\n' + agency + '\n' + dateposted + '\n' + link
-        mail.send(msg)  # flash message as well
-        return redirect(url_for('main'))
+        mail.send(msg)
 
+        # flash message as well
+        #return redirect(url_for('main'))
 
-    return render_template("submit.html", subscribe_bool=subscribe_bool)
+    return render_template("submit.html", subscribe_bool=subscribe_bool, submit_bool=submit_bool)
