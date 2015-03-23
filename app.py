@@ -120,25 +120,6 @@ def about():
 	return render_template("about.html", subscribe_bool=subscribe_bool)
 
 
-@app.route('/metrics', methods=['GET', 'POST'])
-def metrics():
-    # switch header if someone subscribes
-    subscribe_bool = False
-    # if subscribe button clicked
-    if request.method == 'POST':
-        if request.form['submit'] == 'Subscribe':
-            # grab info
-            # email_address = request.form['email_address']
-
-            # add to database here
-            #emailAddition = EmailListing(email_address)
-            #db.session.add(emailAddition)
-            #db.session.commit()
-            # swap message with bool
-            subscribe_bool = True
-    return render_template("metrics.html", subscribe_bool=subscribe_bool)
-
-
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     # switch header if someone subscribes
@@ -181,6 +162,25 @@ def submit():
         mail.send(msg)
 
         # flash message as well
-        #return redirect(url_for('main'))
+        return redirect(url_for('main'), subscribe_bool=subscribe_bool, submit_bool=submit_bool)
 
-    return render_template("submit.html", submit_bool=submit_bool)
+    return render_template("submit.html", subscribe_bool=subscribe_bool)
+
+
+@app.route('/metrics', methods=['GET', 'POST'])
+def metrics():
+    # switch header if someone subscribes
+    subscribe_bool = False
+    # if subscribe button clicked
+    if request.method == 'POST':
+        if request.form['submit'] == 'Subscribe':
+            # grab info
+            # email_address = request.form['email_address']
+
+            # add to database here
+            #emailAddition = EmailListing(email_address)
+            #db.session.add(emailAddition)
+            #db.session.commit()
+            # swap message with bool
+            subscribe_bool = True
+    return render_template("metrics.html", subscribe_bool=subscribe_bool)
