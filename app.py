@@ -134,7 +134,7 @@ def submit():
 	subscribe_bool = False
 	# if subscribe button clicked
 	if request.method == 'POST':
-		if if request.form['submit'] == 'Subscribe':
+		if request.form['submit'] == 'Subscribe':
 			# grab info
 			#email_address = request.form['email_address']
 
