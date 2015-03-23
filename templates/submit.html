@@ -4,10 +4,11 @@
 <div class="container-fluid" style="background-color: #f4f5fc">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
+
+         {% if submit_bool == True%}
+         <h1 class="chain">Thanks for submitting a job!</h1>
+         {% else %}
 			<h1 class="chain">GOT A JOB TO SUBMIT?</h1>
-                {% if submit_bool == True%}
-                <h1 class="chain">WORK?</h1>
-                {% else %}
                 <form name="job_post" method="post">
                     <div class="form-group">
                         <div class="col-sm-5 col-md-offset-1"><label for="JobPosition">Job Position</label><input type="text" class="form-control" id="JobPosition" name="jobposition" placeholder="Enter Job Position" required></div>
@@ -31,7 +32,7 @@
                     <button type="submit" name="submit" class="btn btn-default" value="job_submit" required>Submit</button>
                     </div>
                 </form>
-                {% endif %}
+        {% endif %}
 		</div>
 	</div>
 </div>
