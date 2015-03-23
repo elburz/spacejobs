@@ -69,21 +69,21 @@ def main():
 		elif request.form['submit'] == 'search_submit':
 			search_by = request.form['searchby']
 			search_term = request.form['term']
+			search_term = '%' + search_term + '%'
 			# add % to search term
 
 			if search_by == 'Term':
-				testList = JobListing.query.fitler_by(JobListing.department.like('%' + search_term + '%')).order_by(JobListing.dateposted.desc()).limit(250)
+				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
 			elif search_by == 'Department':
-				testList = JobListing.query.fitler_by(JobListing.department.like('%' + search_term + '%')).order_by(JobListing.dateposted.desc()).limit(250)
+				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
 			elif search_by == 'Location':
-				testList = JobListing.query.fitler_by(JobListing.department.like('%' + search_term + '%')).order_by(JobListing.dateposted.desc()).limit(250)
+				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
 			elif search_by == 'Agency':
-				testList = JobListing.query.fitler_by(JobListing.department.like('%' + search_term + '%')).order_by(JobListing.dateposted.desc()).limit(250)
+				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
 			elif search_by == 'Job Position':
-				testList = JobListing.query.fitler_by(JobListing.department.like('%' + search_term + '%')).order_by(JobListing.dateposted.desc()).limit(250)
-			for i in testList:
-				list = i.id + '   '
-			return(list)
+				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
+
+			return('worked')
 			# search_query = JobListing.query.from_statement(text()).order_by(JobListing.dateposted.desc()).limit(250)
 			# return(search_query)
 	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(100))
