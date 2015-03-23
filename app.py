@@ -134,9 +134,11 @@ def submit():
 			dateposted = dateposted.strftime('%m-%d-%Y')
 			link = request.form['link']
 
+			#might be better to email back to me for checking
 			# add to database here
 			jobAddition = JobListing(term, location, jobposition, department, agency, dateposted, link)
 			db.session.add(jobAddition)
 			db.session.commit()
+			#flash message as well
 			return redirect(url_for('main'))
 	return render_template("submit.html", subscribe_bool=subscribe_bool)

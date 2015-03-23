@@ -4,7 +4,7 @@
 <div class="container-fluid intro">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<h1 class="chain">Search the latest 100 jobs and help get to Space</h1>
+			<h1 class="chain">The Latest 100 Jobs</h1>
 			<table id="scrapedresults" class="display responsive" width="100%">
 				<thead>
 					<tr>
@@ -46,7 +46,21 @@
 				</tbody>
 				
 			</table>
-			<h1 class="chain">Search our full job database</h1>
+			<h1 class="chain">Search Our Full Database</h1>
+
+			<form name="job_post" method="post">
+					<div class="form-group">
+						<div class="col-sm-5 col-md-offset-1"><label for="JobPosition">Job Position</label><input type="text" class="form-control" id="JobPosition" name="jobposition" placeholder="Enter Job Position" required></div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-5 col-md-offset-1"><label for="Term">Term</label><input type="text" class="form-control" name="term" id="Term" placeholder="Enter Term" required></div>
+					</div>
+					
+					<div class="col-sm-5 col-md-offset-1" style="padding: 20px 15px">
+					<button type="submit" name="submit" class="btn btn-default" value="search_submit" required>Search</button>
+					</div>
+				</form>
 		</div>
 	</div>
 </div>
