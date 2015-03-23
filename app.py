@@ -64,8 +64,7 @@ def main():
 			db.session.commit()
 			# swap message with bool
 			subscribe_bool = True
-			# today =
-			# yesterday =
+		'''
 		elif request.form['submit'] == 'search_submit':
 			search_by = request.form['searchby']
 			#search_term = request.form['term']
@@ -74,7 +73,7 @@ def main():
 
 			if search_by == 'Term':
 				testList = JobListing.query.fitler(JobListing.department.like('blue')).order_by(JobListing.dateposted.desc()).limit(100)
-			'''elif search_by == 'Department':
+			elif search_by == 'Department':
 				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
 			elif search_by == 'Location':
 				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
@@ -82,10 +81,11 @@ def main():
 				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
 			elif search_by == 'Job Position':
 				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
-'''
+
 			return('worked')
 
 			# return(search_query)
+			'''
 	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(100))
 
 
