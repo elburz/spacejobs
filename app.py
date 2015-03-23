@@ -7,14 +7,15 @@ import datetime
 app = Flask(__name__)
 
 # config and setup email
+'''
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'spacejobs.us@gmail.com'
 app.config['MAIL_PASSWORD'] = 'priA-glOl-R'
-#mail = Mail(app)
-
+mail = Mail(app)
+'''
 # config and setup db
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['MAIN_SCRAPER_DB_URL']
 db = SQLAlchemy(app)
@@ -61,8 +62,9 @@ class EmailListing(db.Model):
 @app.route('/', methods=['GET', 'POST'])
 def main():
     # switch header if someone subscribes
-    subscribe_bool = False
+    # subscribe_bool = False
     # if subscribe button clicked
+    '''
     if request.method == 'POST':
         if request.form['submit'] == 'Subscribe':
             # grab info
@@ -75,7 +77,6 @@ def main():
             # swap message with bool
             #subscribe_bool = True
             continue
-        '''
         elif request.form['submit'] == 'search_submit':
             search_by = request.form['searchby']
             #search_term = request.form['term']
@@ -103,8 +104,9 @@ def main():
 @app.route('/about', methods=['GET', 'POST'])
 def about():
     # switch header if someone subscribes
-    subscribe_bool = False
+    # subscribe_bool = False
     # if subscribe button clicked
+    '''
     if request.method == 'POST':
         if request.form['submit'] == 'Subscribe':
             # grab info
@@ -117,6 +119,7 @@ def about():
             # swap message with bool
             # subscribe_bool = True
             continue
+    '''
 
     return render_template("about.html")
 
@@ -124,23 +127,12 @@ def about():
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     # switch header if someone subscribes
-    subscribe_bool = False
-    submit_bool = False
+    # subscribe_bool = False
+    # submit_bool = False
 
     # if subscribe button clicked
     if request.method == 'POST':
-        if request.form['submit'] == 'Subscribe':
-            # grab info
-            # email_address = request.form['email_address']
-
-            # add to database here
-            #emailAddition = EmailListing(email_address)
-            #db.session.add(emailAddition)
-            #db.session.commit()
-            # swap message with bool
-            # subscribe_bool = True
-            continue
-        elif request.form['submit'] == 'job_submit':
+        if request.form['submit'] == 'job_submit':
             term = request.form['term']
             location = request.form['location']
             jobposition = request.form['jobposition']
@@ -150,7 +142,7 @@ def submit():
             dateposted = dateposted.strftime('%m-%d-%Y')
             link = request.form['link']
 
-            submit_bool = True
+            #submit_bool = True
 
             # might be better to email back to me for checking
             # add to database here
@@ -164,7 +156,7 @@ def submit():
             #mail.send(msg)
 
             # flash message as well
-            return redirect(url_for("main.html"), subscribe_bool=subscribe_bool, submit_bool=submit_bool)
+            return redirect(url_for("main.html"))
 
     return render_template("submit.html")
 
@@ -172,8 +164,9 @@ def submit():
 @app.route('/metrics', methods=['GET', 'POST'])
 def metrics():
     # switch header if someone subscribes
-    subscribe_bool = False
+    # subscribe_bool = False
     # if subscribe button clicked
+    '''
     if request.method == 'POST':
         if request.form['submit'] == 'Subscribe':
             # grab info
@@ -186,4 +179,5 @@ def metrics():
             # swap message with bool
             #subscribe_bool = True
             continue
+    '''
     return render_template("metrics.html")
