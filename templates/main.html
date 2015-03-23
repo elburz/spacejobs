@@ -50,11 +50,19 @@
 
 			<form name="job_post" method="post">
 					<div class="form-group">
-						<div class="col-sm-5 col-md-offset-1"><label for="JobPosition">Job Position</label><input type="text" class="form-control" id="JobPosition" name="jobposition" placeholder="Enter Job Position" required></div>
+						<div class="col-sm-5 col-md-offset-1"><label for="SearchBy">Search by</label>
+							<select class="form-control" id="SearchBy" name="searchby">
+							  <option>Term</option>
+							  <option>Location</option>
+							  <option>Job Position</option>
+							  <option>Department</option>
+							  <option>Agency</option>
+							</select>
+						</div>
 					</div>
 					
 					<div class="form-group">
-						<div class="col-sm-5 col-md-offset-1"><label for="Term">Term</label><input type="text" class="form-control" name="term" id="Term" placeholder="Enter Term" required></div>
+						<div class="col-sm-5 col-md-offset-1"><label for="Term">Search term</label><input type="text" class="form-control" name="term" id="Term" placeholder="Enter Search Term" required></div>
 					</div>
 					
 					<div class="col-sm-5 col-md-offset-1" style="padding: 20px 15px">
