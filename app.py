@@ -122,60 +122,60 @@ def about():
 
 @app.route('/metrics', methods=['GET', 'POST'])
 def metrics():
-	# switch header if someone subscribes
-	subscribe_bool = False
-	# if subscribe button clicked
-	if request.method == 'POST':
-		if request.form['submit'] == 'Subscribe':
-			# grab info
-			#email_address = request.form['email_address']
+    # switch header if someone subscribes
+    subscribe_bool = False
+    # if subscribe button clicked
+    if request.method == 'POST':
+        if request.form['submit'] == 'Subscribe':
+            # grab info
+            # email_address = request.form['email_address']
 
-			# add to database here
-			#emailAddition = EmailListing(email_address)
-			#db.session.add(emailAddition)
-			#db.session.commit()
-			# swap message with bool
-			subscribe_bool = True
-	return render_template("metrics.html", subscribe_bool=subscribe_bool)
+            # add to database here
+            #emailAddition = EmailListing(email_address)
+            #db.session.add(emailAddition)
+            #db.session.commit()
+            # swap message with bool
+            subscribe_bool = True
+    return render_template("metrics.html", subscribe_bool=subscribe_bool)
 
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
 	# switch header if someone subscribes
-	subscribe_bool = False
-	# if subscribe button clicked
-	if request.method == 'POST':
-		if request.form['submit'] == 'Subscribe':
-			# grab info
-			#email_address = request.form['email_address']
+    subscribe_bool = False
+    # if subscribe button clicked
+    if request.method == 'POST':
+        if request.form['submit'] == 'Subscribe':
+            # grab info
+            # email_address = request.form['email_address']
 
-			# add to database here
-			#emailAddition = EmailListing(email_address)
-			#db.session.add(emailAddition)
-			#db.session.commit()
-			# swap message with bool
-			subscribe_bool = True
-		elif request.form['submit'] == 'job_submit':
-			term = request.form['term']
-			location = request.form['location']
-			jobposition = request.form['jobposition']
-			department = request.form['department']
-			agency = request.form['agency']
-			dateposted = datetime.date.today()
-			dateposted = dateposted.strftime('%m-%d-%Y')
-			link = request.form['link']
+            # add to database here
+            #emailAddition = EmailListing(email_address)
+            #db.session.add(emailAddition)
+            #db.session.commit()
+            # swap message with bool
+            subscribe_bool = True
+        elif request.form['submit'] == 'job_submit':
+            term = request.form['term']
+            location = request.form['location']
+            jobposition = request.form['jobposition']
+            department = request.form['department']
+            agency = request.form['agency']
+            dateposted = datetime.date.today()
+            dateposted = dateposted.strftime('%m-%d-%Y')
+            link = request.form['link']
 
-			# might be better to email back to me for checking
-			# add to database here
-			#jobAddition = JobListing(term, location, jobposition, department, agency, dateposted, link)
-			#db.session.add(jobAddition)
-			#db.session.commit()
+        # might be better to email back to me for checking
+        # add to database here
+        # jobAddition = JobListing(term, location, jobposition, department, agency, dateposted, link)
+        #db.session.add(jobAddition)
+        #db.session.commit()
 
-            # send job back to email for reference
-            msg = Message('Job posting attached', sender="spacejobs.us@gmail.com", recipients=["spacejobs.us@gmail.com"])
-            msg.body = term + '\n' + location + '\n' + jobposition + '\n' + department + '\n' + agency + '\n' + dateposted + '\n' + link
-            mail.send(msg)
+        # send job back to email for reference
+        msg = Message('Job posting attached', sender="spacejobs.us@gmail.com", recipients=["spacejobs.us@gmail.com"])
+        msg.body = term + '\n' + location + '\n' + jobposition + '\n' + department + '\n' + agency + '\n' + dateposted + '\n' + link
+        mail.send(msg)  # flash message as well
+        return redirect(url_for('main'))
 
-			# flash message as well
-			return redirect(url_for('main'))
-	return render_template("submit.html", subscribe_bool=subscribe_bool)
+
+    return render_template("submit.html", subscribe_bool=subscribe_bool)
