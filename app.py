@@ -69,7 +69,7 @@ def main():
 		elif request.form['submit'] == 'search_submit':
 			search_by = request.form['searchby']
 			search_term = request.form['term']
-			return(search_by, search_term)
+			return(search_by + ' ' + search_term)
 			
 	return render_template("main.html", subscribe_bool=subscribe_bool, jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(100))
 
