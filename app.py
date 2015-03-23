@@ -67,13 +67,13 @@ def main():
 			# today =
 			# yesterday =
 		elif request.form['submit'] == 'search_submit':
-			#search_by = request.form['searchby']
+			search_by = request.form['searchby']
 			#search_term = request.form['term']
 			#search_term = '%' + search_term + '%'
 			# add % to search term
 
-			# if search_by == 'Term':
-			testList = JobListing.query.order_by(JobListing.dateposted.desc()).limit(100)
+			if search_by == 'Term':
+				testList = JobListing.query.order_by(JobListing.dateposted.desc()).limit(100)
 			'''elif search_by == 'Department':
 				testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
 			elif search_by == 'Location':
