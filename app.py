@@ -151,19 +151,19 @@ def submit():
 
             #submit_bool = True
 
-        # might be better to email back to me for checking
-        # add to database here
-        # jobAddition = JobListing(term, location, jobposition, department, agency, dateposted, link)
-        #db.session.add(jobAddition)
-        #db.session.commit()
+            # might be better to email back to me for checking
+            # add to database here
+            # jobAddition = JobListing(term, location, jobposition, department, agency, dateposted, link)
+            #db.session.add(jobAddition)
+            #db.session.commit()
 
-        # send job back to email for reference
-        msg = Message('Job posting attached', sender="spacejobs.us@gmail.com", recipients=["spacejobs.us@gmail.com"])
-        msg.body = str(term) + '\n' + str(location) + '\n' + str(jobposition) + '\n' + str(department) + '\n' + str(agency) + '\n' + str(dateposted) + '\n' + str(link)
-        mail.send(msg)
+            # send job back to email for reference
+            msg = Message('Job posting attached', sender="spacejobs.us@gmail.com", recipients=["spacejobs.us@gmail.com"])
+            msg.body = str(term) + '\n' + str(location) + '\n' + str(jobposition) + '\n' + str(department) + '\n' + str(agency) + '\n' + str(dateposted) + '\n' + str(link)
+            mail.send(msg)
 
-        # flash message as well
-        #return redirect(url_for("main.html"), subscribe_bool=subscribe_bool)
+            # flash message as well
+            return redirect(url_for("main.html"), subscribe_bool=subscribe_bool, submit_bool=submit_bool)
 
     return render_template("submit.html")
 
@@ -183,5 +183,6 @@ def metrics():
             #db.session.add(emailAddition)
             #db.session.commit()
             # swap message with bool
-            subscribe_bool = True
+            #subscribe_bool = True
+            pass
     return render_template("metrics.html")
