@@ -1,150 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>SpaceJobs</title>
-		
-		<!-- Bootstrap -->
-		<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
-		<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
-		<link href="{{ url_for('static', filename='css/queries.css') }}" rel="stylesheet">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/flexslider.css') }}" type="text/css">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}" type="text/css">
-		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-		
-		<!-- DataTables CSS -->
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery.dataTables.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dataTables.responsive.css') }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SpaceJobs ADD SOME MORE DESCRIPTIVE STUFF</title>
+        <meta name="description" content="ADD YOUR DESCRIPTION HERE. NO MORE
+        THAN 156 CHARS INCLUDING WHITE SPACE. THIS IS WHAT PEOPLE SEE IN THE
+        SERPS, MAKE IT APPEALING">
+        <!-- Bootstrap -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/queries.css') }}" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		
-		<!-- DataTables -->
-		<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
-		<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/dataTables.responsive.min.js') }}"></script>
-		
-		<script>
-		//actual table setup 
-		$(document).ready( function () {
-		    var table = $('#scrapedresults').DataTable({
-		    	responsive: {
-		    		details: {
-		    			type: 'column',
-		    			target: 'tr'
-		    		}
-		    	},
-		    	
-			columns: [
-		    	 	{ "data": "", className:"control"},
-		            { "data": "term",       	className: "all none" },
-		            { "data": "location"},
-		            { "data": "jobposition",    className: "all" },
-		            { "data": "department", 	className: "none"},
-		            { "data": "agency"},
-		            { "data": "dateposted",     className: "none"},
-		            { "data": "link", 			className: "none"}
-		        ],
-		        order: [[6, "desc"]],
-		        orderClasses: false,
-		        columnDefs: [ {
-		            className: 'control',
-		            orderable: false,
-		            targets:   0
-		        } ],
-		        displayLength: 10,
-		        drawCallback: function ( settings ) {
-		            var api = this.api();
-		            var rows = api.rows( {page:'current'} ).nodes();
-		            var last=null;
- 
-		            api.column(6, {page:'current'} ).data().each( function ( group, i ) {
-		                if ( last !== group ) {
-		                    $(rows).eq( i ).before(
-		                        '<tr class="group"><td colspan="5" style="font-weight:600;">'+group+'</td></tr>'
-		                    );
-		 
-		                    last = group;
-						}
-					});
-				},	
-		    });
+        <!-- DataTables CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery.dataTables.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dataTables.responsive.css') }}">
 
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-		    new $.fn.dataTable( table );
-		} );
-		</script>
+        <!-- DataTables -->
+        <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/dataTables.responsive.min.js') }}"></script>
 
+        <script>
+        //actual table setup 
+        $(document).ready(function() {
+            var table = $('#jobresults').DataTable({
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
 
+                columns: [{
+                    "data": "",
+                    className: "control"
+                }, {
+                    "data": "term",
+                    className: "all none"
+                }, {
+                    "data": "location"
+                }, {
+                    "data": "jobposition",
+                    className: "all"
+                }, {
+                    "data": "department",
+                    className: "none"
+                }, {
+                    "data": "agency"
+                }, {
+                    "data": "dateposted",
+                    className: "none"
+                }, {
+                    "data": "link",
+                    className: "none"
+                }],
+                order: [
+                    [6, "desc"]
+                ],
+                orderClasses: false,
+                columnDefs: [{
+                    className: 'control',
+                    orderable: false,
+                    targets: 0
+                }],
+                displayLength: 50,
+                drawCallback: function(settings) {
+                    var api = this.api();
+                    var rows = api.rows({
+                        page: 'current'
+                    }).nodes();
+                    var last = null;
 
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-	</head>
-	<body>
-		<header>
+                    api.column(6, {
+                        page: 'current'
+                    }).data().each(function(group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before(
+                                '<tr class="group"><td colspan="5" style="font-weight:600;">' + group + '</td></tr>'
+                            );
+
+                            last = group;
+                        }
+                    });
+                },
+            });
+
+        });
+        </script>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    </head>
+    <body>
+ 		<header>
 			<div class="container">
 				<div class="row">
-      				<div class="col-md-2 col-md-offset-5" style="margin-top:0px; padding:10px 0px 0px 0px">
-      					<a href="{{ url_for('main') }}"> <img src="{{ url_for('static', filename='img/main-logo.png') }}" alt="Responsive image" class="img-responsive center-block"></a>
-      				</div>
-    			</div>
-		
-				<div class="row">
-  					<div class="col-sm-2 col-sm-offset-3 text-center">
-  						<a href="{{ url_for('about') }}"><h2><font color="#636063"><u>About</u></font></h2></a>
-  					</div>
-					  <div class="col-sm-2 text-center">
-  							<a href="{{ url_for('main') }}"><h2><font color="#636063"><u>Jobs</u></font></h2></a>
-  					</div>
-  					<div class="col-sm-2 text-center">
-  							<a href="{{ url_for('submit') }}"><h2><font color="#636063"><u>Submit</u></font></h2></a>
-  					</div>
+					<div class="responsive-logo"></div>
+					<div class="pullcontainer">
+						<a href="#" id="pull"><i class="fa fa-bars fa-2x"></i></a>
+					</div>
 				</div>
-				
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<nav>
+							<div class="logo-holder"></div>
+							<ul class="clearfix">
+								<li><a href="{{ url_for('about') }}">About</a></li>
+								<li class="dot">.</li>
+                                <li><a href="{{ url_for('main') }}"
+                                        class="r_spacer">Jobs</a></li>
+                                <li><a href="{{ url_for('submit') }}">Submit</a></li>
+								<li class="dot">.</li>
+								<li><a href="#contact">Contact</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</header>
-		<section class="sign_up" id="signUp">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 sign-up">
-						<h2 class="logo-header">Subscribe for weekly updates!</h2>
-						<form name="signup-form" action="//spacejobs.us10.list-manage.com/subscribe/post?u=1a7c33d69e39a7c3f5bd9befa&amp;id=d0cd11b42f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-							<input id="mce-EMAIL" class="signup-input" type="email" name="EMAIL" value="" placeholder="enter your email..." title="Please enter a valid email address." required>
-							<button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="submit-btn">GO</button>
-						</form>
+        <header>
+            <!-- ################## -->
+            <!-- <div class="container"> -->
+            <!--     <div class="row"> -->
+            <!--         <div class="col-md-2 col-md-offset-5" style="margin-top:0px; padding:10px 0px 0px 0px"> -->
+            <!--             <a href="{{ url_for('main') }}"> <img src="{{ url_for('static', filename='img/main-logo.png') }}" alt="Responsive image" class="img-responsive center-block"></a> -->
+            <!--         </div> -->
+            <!--     </div> -->
+            <!--     <div class="row"> -->
+            <!--         <div class="col-sm-2 col-sm-offset-3 text-center"> -->
+            <!--             <a href="{{ url_for('about') }}"><h2><font color="#636063"><u>About</u></font></h2></a> -->
+            <!--         </div> -->
+            <!--         <div class="col-sm-2 text-center"> -->
+            <!--             <a href="{{ url_for('main') }}"><h2><font color="#636063"><u>Jobs</u></font></h2></a> -->
+            <!--         </div> -->
+            <!--         <div class="col-sm-2 text-center"> -->
+            <!--             <a href="{{ url_for('submit') }}"><h2><font color="#636063"><u>Submit</u></font></h2></a> -->
+            <!--         </div> -->
+            <!--     </div> -->
+            <!-- </div> -->
+        <!-- </header> -->
+        <section class="sign_up" id="signUp">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 sign-up">
+                        <h2 class="logo-header">Subscribe for weekly updates!</h2>
+                        <form name="signup-form" action="//spacejobs.us10.list-manage.com/subscribe/post?u=1a7c33d69e39a7c3f5bd9befa&amp;id=d0cd11b42f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            <input id="mce-EMAIL" class="signup-input" type="email" name="EMAIL" value="" placeholder="enter your email..." title="Please enter a valid email address." required>
+                            <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="submit-btn">GO</button>
+                        </form>
 
-					</div>
-				</div>
-			</div>
-		</section>
-		{% block content %} 
-		{% endblock %}
-		
-		<footer id="contact">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 footer-leftcol">
-						<p><span class="bold-16p">SpaceJobs</span><br>
-						25 The Esplanade<br>
-						Toronto, ON, Canada M5E1W5<br>
-						<a href="#">spacejobs.us@gmail.com</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</footer>
-		
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/jquery.flexslider.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/waypoints.min.js') }}"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% block content %} 
+        {% endblock %}
+        <footer id="contact">
+            <div class="container">
+                <div class="row" name="contact">
+                    <div class="col-md-4 footer-leftcol">
+                        <p><span class="bold-16p">SpaceJobs</span><br>
+                            25 The Esplanade<br>
+                            Toronto, ON, Canada M5E1W5<br>
+                            <a href="#">spacejobs.us@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
-	</body>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
+    </body>
 </html>
