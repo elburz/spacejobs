@@ -1,23 +1,18 @@
-import os
-from flask import Flask, render_template, request, redirect, url_for
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.mail import Mail, Message
 import datetime
+import os
+
+from flask import Flask, redirect, render_template, request, url_for
+from flask.ext.cache import Cache
+from flask.ext.mail import Mail, Message
+from flask.ext.sqlalchemy import SQLAlchemy
+from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
-
-# config and setup email
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USERNAME'] = 'spacejobs.us@gmail.com'
-app.config['MAIL_PASSWORD'] = os.environ['EMAIL_PASS']
-mail = Mail(app)
-
-# config and setup db
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['MAIN_SCRAPER_DB_URL']
+app.config.from_object(os.environ['APP_SETTINGS'])
+app.cache = Cache(app)
 db = SQLAlchemy(app)
+mail = Mail(app)
+toolbar = DebugToolbarExtension(app)
 
 
 class JobListing(db.Model):
@@ -32,7 +27,15 @@ class JobListing(db.Model):
     dateposted = db.Column(db.Text)
     link = db.Column(db.Text)
 
-    def __init__(self, term, location, jobposition, department, agency, dateposted, link):
+    def __init__(
+            self,
+            term,
+            location,
+            jobposition,
+            department,
+            agency,
+            dateposted,
+            link):
         self.term = term
         self.location = location
         self.jobposition = jobposition
@@ -59,6 +62,7 @@ class EmailListing(db.Model):
 
 
 @app.route('/', methods=['GET', 'POST'])
+@app.cache.cached(timeout=10800)  # DUMB DAT BI$H INTO CA$H FOR 180 MIN!
 def main():
     # switch header if someone subscribes
     # subscribe_bool = False
@@ -97,7 +101,10 @@ def main():
 
             # return(search_query)
             '''
-    return render_template("main.html", jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(500))
+    return render_template(
+        "main.html",
+        jobPostings=JobListing.query.order_by(
+            JobListing.dateposted.desc()).limit(1000))
 
 
 @app.route('/about', methods=['GET', 'POST'])
@@ -146,16 +153,20 @@ def submit():
             # might be better to email back to me for checking
             # add to database here
             # jobAddition = JobListing(term, location, jobposition, department, agency, dateposted, link)
-            #db.session.add(jobAddition)
-            #db.session.commit()
+            # db.session.add(jobAddition)
+            # db.session.commit()
 
             # send job back to email for reference
-            msg = Message('Job posting attached', sender="spacejobs.us@gmail.com", recipients=["spacejobs.us@gmail.com"])
-            msg.body = str(term) + '\n' + str(location) + '\n' + str(jobposition) + '\n' + str(department) + '\n' + str(agency) + '\n' + str(dateposted) + '\n' + str(link)
+            msg = Message(
+                'Job posting attached',
+                sender="spacejobs.us@gmail.com",
+                recipients=["spacejobs.us@gmail.com"])
+            msg.body = str(term) + '\n' + str(location) + '\n' + str(jobposition) + '\n' + \
+                str(department) + '\n' + str(agency) + '\n' + str(dateposted) + '\n' + str(link)
             mail.send(msg)
 
             # flash message as well
-            #return redirect(url_for('main'))
+            # return redirect(url_for('main'))
 
     return render_template("submit.html", submit_bool=submit_bool)
 
