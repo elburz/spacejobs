@@ -89,22 +89,20 @@
 		<header>
 			<div class="container">
 				<div class="row">
-      				<div class="col-md-4 col-md-offset-5">
-      					<ul class="clearfix">
-      						<li><img src="{{ url_for('static', filename='img/main-logo.png') }}" width="128" height="128"></li>
-      					</ul>
+      				<div class="col-md-2 col-md-offset-5" style="margin-top:0px; padding:20px">
+      					<a href="{{ url_for('main') }}"> <img src="{{ url_for('static', filename='img/main-logo.png') }}" alt="Responsive image" class="img-responsive center-block"></a>
       				</div>
     			</div>
 		
 				<div class="row">
   					<div class="col-md-2 col-md-offset-4">
-  						<ul class="clearfix">
+  						<ul style="margin-top:0px; padding:20px">
   							<li><a href="{{ url_for('about') }}">About</a></li>
   						</ul>
   					</div>
   
   					<div class="col-md-2">
-  						<ul class="clearfix">
+  						<ul style="margin-top:0px; padding:20px">
   							<li><a href="{{ url_for('submit') }}">Submit</a></li>
   						</ul>
   					</div>
