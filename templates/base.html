@@ -18,6 +18,13 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery.dataTables.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dataTables.responsive.css') }}">
 
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		
+		<!-- DataTables -->
+		<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
+		<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/dataTables.responsive.min.js') }}"></script>
+		
 		<script>
 		//actual table setup 
 		$(document).ready( function () {
@@ -82,26 +89,27 @@
 		<header>
 			<div class="container">
 				<div class="row">
-					<div class="responsive-logo"></div>
-					<div class="pullcontainer">
-						<a href="#" id="pull"><i class="fa fa-bars fa-2x"></i></a>
-					</div>
-				</div>
+      				<div class="col-md-4 col-md-offset-5">
+      					<ul class="clearfix">
+      						<li><img src="{{ url_for('static', filename='img/main-logo.png') }}" width="128" height="128"></li>
+      					</ul>
+      				</div>
+    			</div>
+		
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<nav>
-							<a href="{{ url_for('main') }}"><div class="logo-holder"></div></a>
-							<ul class="clearfix nav-justified" style:"display: block;">
-								<li><a href="{{ url_for('about') }}">About</a></li>
-								<!-- <li class="dot">.</li> 
-								<li><a href="{{ url_for('main') }}" class="r_spacer">Jobs</a></li>-->
-								<!--<li><a href="{{ url_for('metrics') }}">Metrics</a></li>
-								<li class="dot">.</li>-->
-								<li><a href="{{ url_for('submit') }}">Submit</a></li>
-							</ul>
-						</nav>
-					</div>
+  					<div class="col-md-2 col-md-offset-4">
+  						<ul class="clearfix">
+  							<li><a href="{{ url_for('about') }}">About</a></li>
+  						</ul>
+  					</div>
+  
+  					<div class="col-md-2">
+  						<ul class="clearfix">
+  							<li><a href="{{ url_for('submit') }}">Submit</a></li>
+  						</ul>
+  					</div>
 				</div>
+				
 			</div>
 		</header>
 		<section class="sign_up" id="signUp">
@@ -141,13 +149,6 @@
 		<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 		<script src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
 		<script src="{{ url_for('static', filename='js/waypoints.min.js') }}"></script>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		
-		
-		<!-- DataTables -->
-		<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
-		<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/dataTables.responsive.min.js') }}"></script>
-		
+
 	</body>
 </html>
