@@ -89,22 +89,18 @@
 		<header>
 			<div class="container">
 				<div class="row">
-      				<div class="col-md-2 col-md-offset-5" style="margin-top:0px; padding:20px">
+      				<div class="col-md-2 col-md-offset-5" style="margin-top:0px; padding:10px 0px 0px 0px">
       					<a href="{{ url_for('main') }}"> <img src="{{ url_for('static', filename='img/main-logo.png') }}" alt="Responsive image" class="img-responsive center-block"></a>
       				</div>
     			</div>
 		
 				<div class="row">
-  					<div class="col-md-2 col-md-offset-4">
-  						<ul style="margin-top:0px; padding:20px">
-  							<li><a href="{{ url_for('about') }}">About</a></li>
-  						</ul>
+  					<div class="col-md-2 col-md-offset-4 text-center">
+  						<a href="{{ url_for('about') }}"><h2><font color="#636063"><u>About</u></font></h2></a>
   					</div>
   
-  					<div class="col-md-2">
-  						<ul style="margin-top:0px; padding:20px">
-  							<li><a href="{{ url_for('submit') }}">Submit</a></li>
-  						</ul>
+  					<div class="col-md-2 text-center">
+  							<a href="{{ url_for('submit') }}"><h2><font color="#636063"><u>Submit</u></font></h2></a>
   					</div>
 				</div>
 				
