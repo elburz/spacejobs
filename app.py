@@ -97,7 +97,7 @@ def main():
 
             # return(search_query)
             '''
-    return render_template("main.html", jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(500))
+    return render_template("main.html", jobPostings=JobListing.query.order_by(JobListing.dateposted.desc()).limit(250))
 
 
 @app.route('/about', methods=['GET', 'POST'])
