@@ -61,79 +61,23 @@ class EmailListing(db.Model):
         return self.email
 
 
-@app.route('/', methods=['GET', 'POST'])
-@app.cache.cached(timeout=10800)  # DUMB DAT BI$H INTO CA$H FOR 180 MIN!
+@app.route('/', methods=['GET'])
+@app.cache.cached(timeout=10800)  # DUMB DAT BI$H INTO CA$H FOR 180 MIN! awwww yuuhh!
 def main():
-    # switch header if someone subscribes
-    # subscribe_bool = False
-    # if subscribe button clicked
-    '''
-    if request.method == 'POST':
-        if request.form['submit'] == 'Subscribe':
-            # grab info
-            # email_address = request.form['email_address']
-
-            # add to database here
-            #emailAddition = EmailListing(email_address)
-            #db.session.add(emailAddition)
-            #db.session.commit()
-            # swap message with bool
-            #subscribe_bool = True
-            continue
-        elif request.form['submit'] == 'search_submit':
-            search_by = request.form['searchby']
-            #search_term = request.form['term']
-            #search_term = '%' + search_term + '%'
-            # add % to search term
-
-            if search_by == 'Term':
-                testList = JobListing.query.fitler(JobListing.department.like('blue')).order_by(JobListing.dateposted.desc()).limit(100)
-            elif search_by == 'Department':
-                testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
-            elif search_by == 'Location':
-                testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
-            elif search_by == 'Agency':
-                testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
-            elif search_by == 'Job Position':
-                testList = JobListing.query.fitler_by(JobListing.department.like(search_term)).order_by(JobListing.dateposted.desc()).limit(250)
-
-            return('worked')
-
-            # return(search_query)
-            '''
     return render_template(
         "main.html",
         jobPostings=JobListing.query.order_by(
             JobListing.dateposted.desc()).limit(1000))
 
 
-@app.route('/about', methods=['GET', 'POST'])
+@app.route('/about', methods=['GET'])
 def about():
-    # switch header if someone subscribes
-    # subscribe_bool = False
-    # if subscribe button clicked
-    '''
-    if request.method == 'POST':
-        if request.form['submit'] == 'Subscribe':
-            # grab info
-            # email_address = request.form['email_address']
-
-            # add to database here
-            #emailAddition = EmailListing(email_address)
-            #db.session.add(emailAddition)
-            #db.session.commit()
-            # swap message with bool
-            # subscribe_bool = True
-            continue
-    '''
-
     return render_template("about.html")
 
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
-    # switch header if someone subscribes
-    # subscribe_bool = False
+    # this variable gets rid of form after submission
     submit_bool = False
 
     # if subscribe button clicked
@@ -148,14 +92,6 @@ def submit():
             dateposted = dateposted.strftime('%m-%d-%Y')
             link = request.form['link']
 
-            submit_bool = True
-
-            # might be better to email back to me for checking
-            # add to database here
-            # jobAddition = JobListing(term, location, jobposition, department, agency, dateposted, link)
-            # db.session.add(jobAddition)
-            # db.session.commit()
-
             # send job back to email for reference
             msg = Message(
                 'Job posting attached',
@@ -165,29 +101,12 @@ def submit():
                 str(department) + '\n' + str(agency) + '\n' + str(dateposted) + '\n' + str(link)
             mail.send(msg)
 
-            # flash message as well
-            # return redirect(url_for('main'))
+            # set to true = swap out form for thank you message
+            submit_bool = True
 
     return render_template("submit.html", submit_bool=submit_bool)
 
-
-@app.route('/metrics', methods=['GET', 'POST'])
+# coming soon to a theater near you
+@app.route('/metrics', methods=['GET'])
 def metrics():
-    # switch header if someone subscribes
-    # subscribe_bool = False
-    # if subscribe button clicked
-    '''
-    if request.method == 'POST':
-        if request.form['submit'] == 'Subscribe':
-            # grab info
-            # email_address = request.form['email_address']
-
-            # add to database here
-            # emailAddition = EmailListing(email_address)
-            #db.session.add(emailAddition)
-            #db.session.commit()
-            # swap message with bool
-            #subscribe_bool = True
-            continue
-    '''
     return render_template("metrics.html")

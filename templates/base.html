@@ -4,10 +4,15 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>SpaceJobs ADD SOME MORE DESCRIPTIVE STUFF</title>
-        <meta name="description" content="ADD YOUR DESCRIPTION HERE. NO MORE
-        THAN 156 CHARS INCLUDING WHITE SPACE. THIS IS WHAT PEOPLE SEE IN THE
-        SERPS, MAKE IT APPEALING">
+        <title>SpaceJobs.US - The easiest way to find a career in the Space Industry</title>
+        <meta name="keywords" content="space, jobs, job, space-careers, aerospace recruitment, 
+        nasa employment, careers in space, jobs in space, space carrers, aerospace, virgin galactic,
+        aerospace employment, space jobs, spacejobs, space vacancies, space industry, 
+        space recruitment, aerospace jobs, space careers, nasa jobs, job board" />
+        <meta name="description" content="The most streamlined way to find 
+        work in the Space Industry across all disciplines with no logins, 
+        sign ups, or pay walls. Just easy to search jobs!">
+
         <!-- Bootstrap -->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
@@ -15,8 +20,8 @@
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
         <!-- DataTables CSS -->
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery.dataTables.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dataTables.responsive.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dataTables.bootstrap.css') }}">
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -24,6 +29,7 @@
         <!-- DataTables -->
         <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
         <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/dataTables.responsive.min.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='js/dataTables.bootstrap.js') }}"></script>
 
         <script>
         //actual table setup 
@@ -127,27 +133,6 @@
 				</div>
 			</div>
 		</header>
-        <header>
-            <!-- ################## -->
-            <!-- <div class="container"> -->
-            <!--     <div class="row"> -->
-            <!--         <div class="col-md-2 col-md-offset-5" style="margin-top:0px; padding:10px 0px 0px 0px"> -->
-            <!--             <a href="{{ url_for('main') }}"> <img src="{{ url_for('static', filename='img/main-logo.png') }}" alt="Responsive image" class="img-responsive center-block"></a> -->
-            <!--         </div> -->
-            <!--     </div> -->
-            <!--     <div class="row"> -->
-            <!--         <div class="col-sm-2 col-sm-offset-3 text-center"> -->
-            <!--             <a href="{{ url_for('about') }}"><h2><font color="#636063"><u>About</u></font></h2></a> -->
-            <!--         </div> -->
-            <!--         <div class="col-sm-2 text-center"> -->
-            <!--             <a href="{{ url_for('main') }}"><h2><font color="#636063"><u>Jobs</u></font></h2></a> -->
-            <!--         </div> -->
-            <!--         <div class="col-sm-2 text-center"> -->
-            <!--             <a href="{{ url_for('submit') }}"><h2><font color="#636063"><u>Submit</u></font></h2></a> -->
-            <!--         </div> -->
-            <!--     </div> -->
-            <!-- </div> -->
-        <!-- </header> -->
         <section class="sign_up" id="signUp">
             <div class="container">
                 <div class="row">
