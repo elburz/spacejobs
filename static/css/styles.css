@@ -203,7 +203,7 @@ header { background-color: #f4f5fc; }
 header ul { padding-top: 35px; }
 header ul li { list-style: none; float: left; text-transform: uppercase; letter-spacing: 2px; }
 header ul li a { display: block; margin: 0 30px; color: #4d4959; }
-.r_spacer { margin-right: 180px; }
+.r_spacer { margin-right: 240px; }
 .intro { padding: 60px 0; background-color: #f4f5fc; }
 .section-text { position: relative; height: 600px; }
 .nopadding { padding: 0 !important; margin: 0 !important; }
