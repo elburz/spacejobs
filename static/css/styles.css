@@ -195,7 +195,7 @@ a { color: #282f35; -webkit-transition: all .25s ease; -moz-transition: all .25s
 a:hover { color: #64c29e; text-decoration: none; }
 p { text-align: center; font-size: 14px; color: #848789; font-weight: 300; word-spacing: 2px; line-height: 1.8em; margin-top: 25px; }
 p.text-intro { font-size: 18px; }
-.hero { background: url(../img/hero-bg.jpg) no-repeat top center #f4f5fc; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 300px; }
+.hero { background: url('http://baconmockup.com/1600/800/') no-repeat top center ; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: calc(100vh - 115px); }
 nav { height: 85px; margin-top: 30px; position: relative; }
 .logo-holder { background: url(../img/main-logo.png) no-repeat center center; width: 94px; height: 85px; position: absolute; top: 0; left: 327px; }
 .responsive-logo { display: hidden; }
