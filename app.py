@@ -62,12 +62,21 @@ class EmailListing(db.Model):
 
 
 @app.route('/', methods=['GET'])
-@app.cache.cached(timeout=10800)  # DUMB DAT BI$H INTO CA$H FOR 180 MIN! awwww yuuhh!
+@app.cache.cached(timeout=10800)
 def main():
-    return render_template(
-        "main.html",
-        jobPostings=JobListing.query.order_by(
-            JobListing.dateposted.desc()).limit(1000))
+    """
+    Route for home page. Checks if old page ids like spacejobs.us/?page=6 exist
+    and redirects back to the root of the domain with a 301.
+    Caches DB query for 180 minutes.
+    """
+    old_url = request.args.get('page')
+    if old_url:
+        return redirect('/', 301)
+    else:
+        return render_template(
+            "main.html",
+            jobPostings=JobListing.query.order_by(
+                JobListing.dateposted.desc()).limit(1000))
 
 
 @app.route('/about', methods=['GET'])
@@ -107,6 +116,8 @@ def submit():
     return render_template("submit.html", submit_bool=submit_bool)
 
 # coming soon to a theater near you
+
+
 @app.route('/metrics', methods=['GET'])
 def metrics():
     return render_template("metrics.html")
