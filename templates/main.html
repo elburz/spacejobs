@@ -44,9 +44,31 @@
 					</tr>
 				{% endfor %}
 				</tbody>
-				
 			</table>
 		</div>
+		<div class="col-md-12">
+      		<h1 class="chain">WOULD YOU LIKE TO SUBMIT A JOB?</h1>
+                <form method="post" name="job_post">
+                    <div class="form-group" style="padding: 20px 0px">
+                        <div class="col-sm-4"><label for="JobPosition">Job Position</label><input required="" placeholder="Enter Job Position" name="jobposition" id="JobPosition" class="form-control" type="text"></div>
+
+                        <div class="col-sm-4"><label for="Department">Department</label><input required="" placeholder="Enter Department" name="department" id="Department" class="form-control" type="text"></div>
+                      
+                      <div class="col-sm-4"><label for="Location">Location</label><input required="" placeholder="Enter Location" id="Location" class="form-control" name="location" type="text"></div>
+                    </div>
+
+                    <div class="form-group" style="padding: 40px 0px">
+                        <div class="col-sm-4"><label for="Agency">Agency</label><input required="" placeholder="Enter Agency" id="Agency" class="form-control" name="agency" type="text"></div>
+                        <div class="col-sm-4"><label for="Term">Term</label><input required="" placeholder="Enter Term" id="Term" name="term" class="form-control" type="text"></div>
+
+                        <div class="col-sm-4"><label for="ApplicationLink">Application Link</label><input required="" placeholder="Enter Application Link" id="ApplicationLink" class="form-control" name="link" type="text"></div>
+                    </div>
+
+                    <div style="padding: 20px 15px" class="col-sm-5">
+                    	<button required="" value="job_submit" class="btn btn-default" name="submit" type="submit">Submit</button>
+                    </div>
+                </form>
+    	</div>
 	</div>
 </div>
 {% endblock %}
