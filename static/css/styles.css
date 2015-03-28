@@ -195,7 +195,7 @@ a { color: #282f35; -webkit-transition: all .25s ease; -moz-transition: all .25s
 a:hover { color: #64c29e; text-decoration: none; }
 p { text-align: center; font-size: 14px; color: #848789; font-weight: 300; word-spacing: 2px; line-height: 1.8em; margin-top: 25px; }
 p.text-intro { font-size: 18px; }
-.hero { background: url(../img/hero-bg.jpg) no-repeat top center #f4f5fc; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 300px; }
+.hero { background: url('../img/hero-bg.jpg') no-repeat top center ; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 100vh; }
 nav { height: 85px; margin-top: 30px; position: relative; }
 .logo-holder { background: url(../img/main-logo.png) no-repeat center center; width: 94px; height: 85px; position: absolute; top: 0; left: 327px; }
 .responsive-logo { display: hidden; }
@@ -242,6 +242,8 @@ a.close-overlay.hidden { display: none }
 .sign-up { text-align: center; background-color: #f4f5fc;}
 .signup-input { border: solid 1px #d3d7d9; padding: 15px; width: 65%; color: #929292; font-style: italic; letter-spacing: 1px; }
 .submit-btn { background-color: #64c29e; color: #fff; border: solid 1px #64c29e; font-weight: 300; padding: 15px 50px; }
+.jobsubmit-btn { width: 100%; background-color: #64c29e; color: #fff; border: solid 1px #64c29e; font-weight: 300; padding: 15px 50px; }
+.jobsubmit-input { display: block; border: solid 1px #d3d7d9; padding: 15px; width: 100%; color: #929292; font-style: italic; letter-spacing: 1px; }
 section.sign_up { padding: 10px 0px 0px 0px; background-color: #f4f5fc;}
 footer { background-color: #f4f5fc; padding: 25px 0; }
 footer p { font-size: 13px; margin: 0; }

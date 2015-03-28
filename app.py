@@ -79,11 +79,6 @@ def main():
                 JobListing.dateposted.desc()).limit(1000))
 
 
-@app.route('/about', methods=['GET'])
-def about():
-    return render_template("about.html")
-
-
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     # this variable gets rid of form after submission
