@@ -11,7 +11,8 @@ class Config(object):
 
 
 class ProductionConfig(Config):
-    DEBUG = True
+    DEBUG_TB_INTERCEPT_REDIRECTS = False
+    DEBUG = False
     MAIL_PASSWORD = os.environ['EMAIL_PASS']
     MAIL_PORT = 465
     MAIL_SERVER = 'smtp.gmail.com'

@@ -97,13 +97,16 @@ def submit():
             link = request.form['link']
 
             # send job back to email for reference
-            # msg = Message(
-            #     'Job posting attached',
-            #     sender="spacejobs.us@gmail.com",
-            #     recipients=["spacejobs.us@gmail.com"])
-            # msg.body = str(term) + '\n' + str(location) + '\n' + str(jobposition) + '\n' + \
-            #     str(department) + '\n' + str(agency) + '\n' + str(dateposted) + '\n' + str(link)
-            # mail.send(msg)
+            msg = Message(
+                'Job posting attached',
+                sender="spacejobs.us@gmail.com",
+                recipients=["spacejobs.us@gmail.com"])
+            msg.body = str(term) + '\n' + str(location) + '\n' + str(jobposition) + '\n' + \
+                str(department) + '\n' + str(agency) + '\n' + str(dateposted) + '\n' + str(link)
+            try:
+                mail.send(msg)
+            except:
+                pass
 
             # set to true = swap out form for thank you message
             submit_bool = True
