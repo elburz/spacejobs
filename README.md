@@ -8,5 +8,5 @@ Our goal is to get anyone with an interest in Space a job in the industry. For u
 
 We're always interested in having anyone come on board our team and further our goal.
 
-# Acknowledgment 
+### Acknowledgment 
 Version 1 of http://spacejobs.us was created by Jake Bowels (http://www.jakebowles.com/), who decided to pursue other areas of expertise and closed down the original SpaceJobs.US. Our community stepped in upon his departure to rebuild the site and will maintain and grow it going forward.
