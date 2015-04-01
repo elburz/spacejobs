@@ -127,7 +127,7 @@ def atom_feed():
                     feed_url=request.url, url=request.url_root)
     jobs = JobListing.query.order_by(JobListing.dateposted.desc()).limit(50).all()
     for job in jobs:
-        title = job.term + ' ' + job.jobposition + ' @ ' + job.agency
+        title = job.term + ' ' + job.jobposition + ' @ ' + job.agency + ' - ' + job.location 
         content = 'Department: ' + job.department + '  ----   Location: ' + job.location
         date_obj = datetime.datetime.strptime(job.dateposted, '%m-%d-%Y')
         feed.add(title, content, content_type='html',author=job.agency,url=job.link,updated=date_obj)
