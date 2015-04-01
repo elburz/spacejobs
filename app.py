@@ -6,6 +6,8 @@ from flask.ext.cache import Cache
 from flask.ext.mail import Mail, Message
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask_debugtoolbar import DebugToolbarExtension
+from werkzeug.contrib.atom import AtomFeed
+
 
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
@@ -114,8 +116,20 @@ def submit():
     return render_template("submit.html", submit_bool=submit_bool)
 
 # coming soon to a theater near you
-
-
 @app.route('/metrics', methods=['GET'])
 def metrics():
     return render_template("metrics.html")
+
+
+@app.route('/recent.atom')
+def atom_feed():
+    feed = AtomFeed('50 Newest Jobs This Week',
+                    feed_url=request.url, url=request.url_root)
+    jobs = JobListing.query.order_by(JobListing.dateposted.desc()).limit(50).all()
+    for job in jobs:
+        title = job.term + ' ' + job.jobposition + ' @ ' + job.agency
+        content = 'Department: ' + job.department + '  ----   Location: ' + job.location
+        date_obj = datetime.datetime.strptime(job.dateposted, '%m-%d-%Y')
+        feed.add(title, content, content_type='html',author=job.agency,url=job.link,updated=date_obj)
+    return feed.get_response()
+
