@@ -64,7 +64,7 @@ class EmailListing(db.Model):
 
 
 @app.route('/', methods=['GET'])
-#@app.cache.cached(timeout=10800)
+@app.cache.cached(timeout=10800)
 def main():
     """
     Route for home page. Checks if old page ids like spacejobs.us/?page=6 exist
@@ -75,7 +75,11 @@ def main():
     if old_url:
         return redirect('/', 301)
     else:
-        return render_template("main.html", jobPostings=db.session.execute("SELECT * FROM scrapedresults ORDER BY dateposed DESC"))
+        return render_template(
+            "main.html",
+            jobPostings=JobListing.query.order_by(
+                JobListing.dateposted.desc()).limit(1000))
+
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
