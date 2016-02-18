@@ -64,7 +64,7 @@ class EmailListing(db.Model):
 
 
 @app.route('/', methods=['GET'])
-@app.cache.cached(timeout=10800)
+#@app.cache.cached(timeout=10800)
 def main():
     """
     Route for home page. Checks if old page ids like spacejobs.us/?page=6 exist
