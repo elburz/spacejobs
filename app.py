@@ -78,7 +78,7 @@ def main():
         return render_template(
             "main.html",
             jobPostings=JobListing.query.order_by(
-                JobListing.dateposted.desc()).limit(1000))
+                JobListing.id.desc()).limit(1000))
 
 
 @app.route('/submit', methods=['GET', 'POST'])
