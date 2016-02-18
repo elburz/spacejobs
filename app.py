@@ -75,7 +75,7 @@ def main():
     if old_url:
         return redirect('/', 301)
     else:
-        return render_template("main.html", jobPostings=JobListing.query.from_statement(text("SELECT * FROM scrapedresults ORDER BY dateposted DESC")))
+        return render_template("main.html", jobPostings=db.session.execute("SELECT * FROM scrapedresults ORDER BY dateposed DESC"))
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
