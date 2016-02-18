@@ -77,8 +77,7 @@ def main():
     else:
         return render_template(
             "main.html",
-            jobPostings=JobListing.query.order_by(
-                JobListing.dateposted.desc()).limit(1000))
+            jobPostings=JobListing.query.from_statement("SELECT * FROM scrapedresults ORDER BY to_timestamp(dateposted, 'MM-DD-YYYY') DESC").limit(1000))
 
 
 @app.route('/submit', methods=['GET', 'POST'])
