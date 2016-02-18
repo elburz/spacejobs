@@ -75,10 +75,10 @@ def main():
     if old_url:
         return redirect('/', 301)
     else:
-        return render_template(
-            "main.html",
-            jobPostings=JobListing.query.from_statement(text("SELECT * FROM scrapedresults ORDER BY to_timestamp(dateposted, 'MM-DD-YYYY') DESC")).limit(1000))
-
+        try:
+            return render_template("main.html", jobPostings=JobListing.query.from_statement(text("SELECT * FROM scrapedresults ORDER BY to_timestamp(dateposted, 'MM-DD-YYYY') DESC")).limit(1000))
+        except Exception as error:
+            return error
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
