@@ -77,7 +77,7 @@ def main():
     else:
         return render_template(
             "main.html",
-            jobPostings=db.session.execute("SELECT * FROM scrapedresults ORDER BY dateposed DESC").limit(1000))
+            jobPostings=db.session.execute("SELECT * FROM scrapedresults ORDER BY dateposed DESC"))
 
 
 @app.route('/submit', methods=['GET', 'POST'])
